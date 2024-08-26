@@ -112,3 +112,10 @@ h2{
     height: 400px;
 }
 
+.container img{
+    width: 90%;
+    height: 65%;
+    justify-self:center;
+    margin: 1vh 2.5vw;
+    border-radius: 10%;
+}
