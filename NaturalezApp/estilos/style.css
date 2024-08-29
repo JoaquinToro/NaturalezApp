@@ -45,8 +45,11 @@ body{
 }
 
 .menu-burger svg {
-    height: 100%;
-    width: 100%;
+    position: relative;
+    top: .125em;
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
 }
 
 @media (max-width: 600px) {

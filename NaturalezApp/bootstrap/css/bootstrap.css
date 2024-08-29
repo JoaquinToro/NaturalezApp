@@ -12098,8 +12098,8 @@ body{
 }
 
 .menu-burger {
-  height: 28px;
-  width: 37px;
+  height: 30px;
+  width: 40px;
 }
 
 .menu-burger svg {
@@ -12152,16 +12152,47 @@ p{
   text-align: justify;
 }
 
+.menu-burger{
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+
+.menu-burger svg {
+  position: relative;
+  top: .125em;
+  fill: currentColor;
+}
+
+.menu-burger svg{
+  position: relative;
+  top: .125em;
+  height: 100%;
+  width: 100%;
+  fill: currentColor;
+}
+
+.rotated{
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease;
+}
+
 .secciones-wrapper {
   display: flex;
+  flex-grow:inherit ; 
   flex-wrap: wrap;
   gap: 20px 1vw;
   padding: 10px;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .seccion {
-  max-width: calc(50% - 10px);
+  max-width: calc(50% - 20px);
   margin: 1vh 2%;
   min-width: 340px;
 
@@ -12189,7 +12220,7 @@ p{
   display: flex;
   align-items: center;
 }
-.container{
+.containerJqn{
   background: var(--color4);
   border-radius: 10px;
   height: 400px;
@@ -12199,7 +12230,7 @@ p{
   max-width: 400px;
 }
 
-.container img{
+.containerJqn img{
   width: 95%;
   height: 60%;
   border-radius: 10%;
@@ -12207,7 +12238,7 @@ p{
   margin: auto;
 }
 
-.container h2{
+.containerJqn h2{
   margin: 1vh 1vw;
 }
 
