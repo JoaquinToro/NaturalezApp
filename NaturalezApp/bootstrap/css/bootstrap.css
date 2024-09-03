@@ -12163,10 +12163,66 @@ p{
 }
 
 
-.menu-burger svg {
-  position: relative;
-  top: .125em;
-  fill: currentColor;
+.body-content {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+.body-content.shifted {
+  margin-right: 200px;/
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: -200px;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+  transition: right 0.3s ease;
+}
+
+.sidenav.show {
+  right: 0; /* Muestra el menú en su posición final */
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.menu-burger{
+  transition: transform 0.3s ease;
 }
 
 .menu-burger svg{
@@ -12179,7 +12235,6 @@ p{
 
 .rotated{
   transform: rotate(-90deg);
-  transition: transform 0.3s ease;
 }
 
 .secciones-wrapper {

@@ -1,12 +1,15 @@
-const menuBurger = document.getElementById("menu-burger");
-const svgMenu = document.getElementById("svgMenuBurger");
+const sidenav = document.querySelector(".sidenav");
+const bodyContent = document.querySelector(".body-content");
+const menuButton = document.getElementById("menu-burger");
 
-menuBurger.addEventListener("click",desplegarMenu);
-
-function desplegarMenu(){
-    if(svgMenu.classList.contains("rotated")){
-        svgMenu.classList.remove("rotated");
+document.getElementById("menu-burger").addEventListener("click", function() {
+    sidenav.classList.toggle("show");
+    bodyContent.classList.toggle("shifted");
+    menuButton.classList.toggle("shifted");
+    if (!menuButton.classList.contains("rotated")){
+        menuButton.classList.add("rotated");
     }else{
-        svgMenu.classList.add("rotated");
+        menuButton.classList.remove("rotated");
     }
-}
+    
+  });
