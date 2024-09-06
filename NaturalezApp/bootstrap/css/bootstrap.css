@@ -12331,10 +12331,41 @@ a{
   align-content: space-between;
   width: 120px;
   height: 50px;
-  left: 197px;
-  top: 127px;
-
-background: #A5BE7D;
-border-radius: 50px;
+  background: #A5BE7D;
+  border-radius: 50px;
 }
 
+button:hover{
+  background-color: var(--color3) !important;
+}
+
+button:active{
+  background-color: var(--color4) !important;
+}
+
+.menu-botones{
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.tabla{
+  justify-content: center !important;
+  display: flex;
+}
+
+.busqueda{
+  max-width: 50rem;
+  max-height: 20rem;
+}
+
+.caja-resultados{
+  width: 100%;
+  height: 400px;
+  text-align: center;
+  justify-content: center;
+  margin: 1rem;
+  background-color: red !important;
+  border: 1px solid black;
+}
