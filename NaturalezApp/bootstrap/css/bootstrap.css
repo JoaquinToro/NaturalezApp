@@ -12158,7 +12158,7 @@ p{
 }
 
 .body-content {
-  height: 85%;
+  height: 100%;
   margin-left: 0;
   transition: margin-left 0.3s ease;
 }
@@ -12168,7 +12168,7 @@ p{
 }
 
 .sidenav {
-  height: calc(100% - 60px); /* Ocupará el 85% de la altura de la pantalla */
+  height: calc(100% - 60px);
   width: 320px;
   position: absolute;
   z-index: 1;
@@ -12322,6 +12322,19 @@ a{
   margin: 1vh 1vw;
 }
 
+.btn{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: space-between;
+  width: 120px;
+  height: 50px;
+  left: 197px;
+  top: 127px;
 
-
+background: #A5BE7D;
+border-radius: 50px;
+}
 
