@@ -486,9 +486,7 @@ select:disabled {
 button,
 [type=button],
 [type=reset],
-[type=submit] {
-  -webkit-appearance: button;
-}
+[type=submit]
 button:not(:disabled),
 [type=button]:not(:disabled),
 [type=reset]:not(:disabled),
@@ -544,7 +542,6 @@ legend + * {
 }
 
 [type=search] {
-  -webkit-appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -571,7 +568,6 @@ legend + * {
 
 ::file-selector-button {
   font: inherit;
-  -webkit-appearance: button;
 }
 
 output {
@@ -2407,7 +2403,6 @@ textarea.form-control-lg {
   background-size: contain;
   border: var(--bs-border-width) solid var(--bs-border-color);
   -webkit-print-color-adjust: exact;
-  color-adjust: exact;
   print-color-adjust: exact;
 }
 .form-check-input[type=checkbox] {
@@ -12071,7 +12066,7 @@ body{
 
 .header {
   width: 100%;
-  height: auto;
+  height: 15%;
   min-height: 60px;
   display: flex;
   justify-content: space-between;
@@ -12162,8 +12157,8 @@ p{
   cursor: pointer;
 }
 
-
 .body-content {
+  height: 85%;
   margin-left: 0;
   transition: margin-left 0.3s ease;
 }
@@ -12172,50 +12167,78 @@ p{
   margin-right: 200px;/
 }
 
-/* Fixed sidenav, full height */
 .sidenav {
-  height: 100%;
-  width: 200px;
-  position: fixed;
+  height: calc(100% - 60px); /* Ocupará el 85% de la altura de la pantalla */
+  width: 320px;
+  position: absolute;
   z-index: 1;
-  top: 0;
-  right: -200px;
-  background-color: #111;
+  right: -320px;
+  background-color: whitesmoke;
   overflow-x: hidden;
-  padding-top: 20px;
   transition: right 0.3s ease;
+  text-align: center;
+  bottom: 0; /* Anclado al fondo de la pantalla */
+}
+
+.sidenav.opcion{
+  display: block;
+  height: 100%;
+}
+
+.opcion{
+  border: 1px solid black;
+  background-color: var(--color1);
+  color: black;
+  margin: 0;
+  height: 50px;
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
+  text-decoration: none;
+}
+
+.opcion:hover{
+  background-color:whitesmoke;
+}
+
+a{
+  text-decoration: none;
 }
 
 .sidenav.show {
-  right: 0; /* Muestra el menú en su posición final */
+  right: 0;
 }
 
-/* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
   color: #f1f1f1;
 }
 
-/* Main content */
+
 .main {
-  margin-left: 200px; /* Same as the width of the sidenav */
-  font-size: 20px; /* Increased text to enable scrolling */
+  margin-left: 360px; 
+  font-size: 20px; 
   padding: 0px 10px;
 }
 
-/* Add an active class to the active dropdown button */
+
 .active {
   background-color: green;
   color: white;
 }
 
-/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
   display: none;
   background-color: #262626;
   padding-left: 8px;
 }
 
-/* Optional: Style the caret down icon */
+
 .fa-caret-down {
   float: right;
   padding-right: 8px;

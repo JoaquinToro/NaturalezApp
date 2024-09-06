@@ -2,7 +2,8 @@ const sidenav = document.querySelector(".sidenav");
 const bodyContent = document.querySelector(".body-content");
 const menuButton = document.getElementById("menu-burger");
 
-document.getElementById("menu-burger").addEventListener("click", function() {
+//Función que despliega el menú lateral 
+function toggleMenu(){
     sidenav.classList.toggle("show");
     bodyContent.classList.toggle("shifted");
     menuButton.classList.toggle("shifted");
@@ -11,5 +12,18 @@ document.getElementById("menu-burger").addEventListener("click", function() {
     }else{
         menuButton.classList.remove("rotated");
     }
-    
-  });
+}
+
+//Se añade el click en el SVG de menu burger del header para que despliege el menú
+document.getElementById("menu-burger").addEventListener("click", function(event){
+    event.stopPropagation();
+    toggleMenu();
+});
+
+//Se añade el click en el cuerpo del documento para que cierre el menú si se presiona en el
+//cuando el menú está desplegado
+document.addEventListener("click", function(event){
+    if(!sidenav.contains(event.target) && sidenav.classList.contains("show")){
+        toggleMenu();
+    }
+});
