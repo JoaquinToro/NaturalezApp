@@ -12177,7 +12177,8 @@ p{
   overflow-x: hidden;
   transition: right 0.3s ease;
   text-align: center;
-  bottom: 0; /* Anclado al fondo de la pantalla */
+  bottom: 0;
+  display: none;
 }
 
 .sidenav.opcion{
@@ -12213,6 +12214,7 @@ a{
 
 .sidenav.show {
   right: 0;
+  display: block;
 }
 
 .sidenav a:hover, .dropdown-btn:hover {
@@ -12319,6 +12321,7 @@ a{
 .containerJqn h2{
   margin: 1vh 1vw;
 }
+
 
 
 
