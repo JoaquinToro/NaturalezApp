@@ -223,3 +223,8 @@ h2{
     text-align: center;
     padding:20px;
 }
+hr{
+    width: 90%;
+    color: var(--color2);
+    margin: 20px auto;
+  }
