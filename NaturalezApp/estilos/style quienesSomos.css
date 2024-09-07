@@ -111,34 +111,6 @@ h2{
 }
 
 .main-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-}
-
-.content-box {
-    background-color: #5f8575;
-    border-radius: 5px;
-    padding: 5px;
-    margin-top: 5px;
-    width: 50%;
-    display: flexbox;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 20px;
-}
-
-.content-box p {
-    margin-top: 0;
-    font-size: 20px;
-    color:white;
-    font-weight: normal;
-    padding: 5px;
-}
-
-
-
-.main-image{
     margin-top: 5px;
     display: block;
     margin-left: auto;
@@ -149,10 +121,69 @@ h2{
     border-radius: 10px;
 }
 
+.content-box {
+    background-color: #5f8575;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+}
+
+.content-box p {
+    margin-top: 0;
+    font-size: 20px;
+    color: white;
+    font-weight: normal;
+    padding: 5px;
+}
+
 .tituloPag {
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 30px;
     text-align: center;
-    padding:20px;
+    padding: 20px;
+}
+
+/* Estilos para pantallas más pequeñas (móviles) */
+@media only screen and (max-width: 768px) {
+    .main-image {
+        width: 90%;
+        height: auto;
+    }
+
+    .content-box {
+        width: 90%;
+        padding: 10px;
+        font-size: 18px;
+    }
+
+    .tituloPag {
+        font-size: 24px;
+        padding: 10px;
+    }
+}
+
+/* Estilos para pantallas muy pequeñas (teléfonos) */
+@media only screen and (max-width: 480px) {
+    .main-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .content-box {
+        width: 95%;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .tituloPag {
+        font-size: 20px;
+        padding: 5px;
+    }
 }
