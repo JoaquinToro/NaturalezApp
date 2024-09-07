@@ -12051,6 +12051,8 @@ textarea.form-control-lg {
 
 /*# sourceMappingURL=bootstrap.css.map */
 /*Estilos propios*/
+
+/*buscarArea*/
 :root {
   --color1: #A5BE7D;
   --color2: #74A059;
@@ -12333,6 +12335,8 @@ a{
   margin: 1vh 1vw;
 }
 
+/*recomendarArea*/
+
 .btn{
   display: flex;
   flex-direction: row;
@@ -12459,3 +12463,8 @@ button:active{
   border-radius: 5px;
 }
 
+/*buscarArea*/
+
+.busqueda{
+  margin-top: 20px;
+}
