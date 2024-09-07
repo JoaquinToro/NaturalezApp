@@ -38,20 +38,21 @@
             <a href="#Quienes-Somos"><p class="opcion">Quienes Somos</p></a>
         </div>
         <div class="menu-botones">
+            <h2>Elija la categoría que desea Buscar</h2>
             <div class="row align-items-center">
                 <div class="col-6 mb-2 tabla">
-                    <button class="btn btn-primary">Flora</button>
+                    <button title="Seleccionar flora" type="button" class="btn btn-primary">Flora</button>
                 </div>
                 <div class="col-6 mb-2 tabla">
-                    <button class="btn btn-primary">Fauna</button>
+                    <button title="Seleccionar fauna" type="button" class="btn btn-primary">Fauna</button>
                 </div>
             </div>
             <div class="row align-items-center">
-                <div class="col-6 mb-2 tabla">
+                <div title="Seleccionar ubicación" type="button" class="col-6 mb-2 tabla">
                     <button class="btn btn-primary">Ubicacion</button>
                 </div>
-                <div class="col-6 mb-2 tabla">
-                    <button class="btn btn-primary">Geografia</button>
+                <div title="Seleccionar tipo de área" type="button" class="col-6 mb-2 tabla">
+                    <button class="btn btn-primary">Tipo</button>
                 </div>
             </div>
         </div>
@@ -59,14 +60,19 @@
         <div class="container-fluid busqueda">
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Ingrese su búsqueda..." aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Buscar</button>
             </form>
         </div>
         <div class="container px-4 py-4 bg-white caja-resultados">
             <div class="resultado">
-
+                <img src="assets/placeholder/placeholder-image.jpg" alt="Imagen de placeholder">
+                <div class="info">
+                    <h3 id="nombre-resultado">Lorem Ipsum</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
             </div>
-            
+            <div class="container agregar">
+                <button title="Agregar decisión" type="button" class="btn-agregar">Agregar</button>    
+            </div>  
         </div>
     </div>
     <footer>
