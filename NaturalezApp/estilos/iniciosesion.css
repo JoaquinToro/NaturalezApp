@@ -1,0 +1,75 @@
+
+
+body{
+    background-color: #fff;
+}
+
+.bg-holder{
+    background-image: linear-gradient(rgba(5,7,12,0.75),rgba(5,7,12,0.75)),url("../assets/img/img1.jpg");
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+.btn{
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: #A5BE7D;
+    color: white;
+}
+
+.btn i{
+    vertical-align: text-top;
+}
+
+.divider-content-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    background-color: #fff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #999;
+}
+
+#btnIniciarSesion:hover{
+    background-color: #74A059;
+    color: white;
+}
+
+.divider{
+    margin: 2rem 0;
+    
+}
+
+.btn-outline-custom{
+    color: white;
+    border-color: #ddd;
+}
+
+.btn-outline-custom:hover{
+    color: white;
+    border: none;
+    background-color: #2B393B;
+}
+
+h1, p{
+    color: #A5BE7D;
+}
+
+.creacionCuentas{
+    text-decoration: none; 
+    color: white; 
+    font-weight: normal; 
+    font-style: normal;
+    font-weight: bold; 
+}

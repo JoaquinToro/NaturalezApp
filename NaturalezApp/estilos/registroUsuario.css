@@ -1,0 +1,60 @@
+.bg-holder {
+    background-image: linear-gradient(rgba(5,7,12,0.55),rgba(5,7,12,0.55)),url("../assets/img/img3.jpg");
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1; /* Asegura que esté detrás del formulario */
+}
+
+.form-container {
+    z-index: 2; /* Para que quede por encima de la bg-holder */
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+}
+
+.btn{
+    font-size: 0.8rem;
+    font-weight: 700;
+    background-color: #A5BE7D;
+    color: white;
+}
+
+.btn:hover{
+    background-color: #74A059;
+    color: white;
+}
+
+h3{
+    color: #A5BE7D;
+}
+
+img{
+    width: 30px;
+    margin: 0;
+}
