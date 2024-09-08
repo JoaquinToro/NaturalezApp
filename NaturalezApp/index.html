@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="icon" href="assets/icons/NaturalezApp-Icon.svg">
     <title>NaturalezApp - Pagina principal</title>
@@ -38,6 +39,43 @@
             <a href="quienesSomos.html"><p class="opcion">Quienes Somos</p></a>
             <a href="registroUsuario.html"><p class="opcion">Crear cuenta</p></a>
             <a href="inicioSesion.html"><p class="opcion">Iniciar Sesión</p></a>
+        </div>
+        <div class="banner">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="image-wrapper">
+                    <img id="imagen-carrusel" src="assets/images/Jardin_Botanico_Vina_Del_Mar.jpg" alt="First slide">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-wrapper">
+                    <img id="imagen-carrusel" src="assets/images/pudu.jpg" alt="Second slide">
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="image-wrapper">
+                    <img id="imagen-carrusel" src="assets/images/Flor de la Culebra.jpeg" alt="Third slide">
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            <div class="bajada-texto">
+                <p>NaturalezApp es página web enfocada en </p>
+            </div>
         </div>
         <div class="secciones-wrapper">
             <div class="seccion col-xs-1">
@@ -150,6 +188,9 @@
             </div>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="scripts/desplegar-menu.js" defer></script>
 </body>
 </html>
