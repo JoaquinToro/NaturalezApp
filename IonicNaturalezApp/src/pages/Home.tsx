@@ -5,6 +5,7 @@ import '../theme/bootstrap.css';
 
 //Importar componentes
 import HeaderN from '../components/HeaderN';
+import FooterN from '../components/FooterN';
 
 const Home: React.FC = () => {
   return (
