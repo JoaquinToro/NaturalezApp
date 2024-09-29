@@ -9,9 +9,7 @@ import HeaderN from '../components/HeaderN';
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <HeaderN/>
-      </IonHeader>
+      <HeaderN/>
       <IonContent fullscreen>
         <div className="body-content">
           <div id="sidenav" className="sidenav">
