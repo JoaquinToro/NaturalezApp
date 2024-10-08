@@ -12,18 +12,6 @@ const Home: React.FC = () => {
     <IonPage>
       <HeaderN/>
       <IonContent fullscreen>
-        <div className="body-content">
-          <div id="sidenav" className="sidenav">
-              <a href="home"><p className="opcion">Inicio</p></a>
-              <a href="infoParque.html"><p className="opcion">Áreas Naturales</p></a>
-              <a href="buscarArea.html"><p className="opcion">Buscar Área</p></a>
-              <a href="recomendarArea.html"><p className="opcion">Recomendar Área</p></a>
-              <a href="#Flora"><p className="opcion">Flora</p></a>
-              <a href="#Fauna"><p className="opcion">Fauna</p></a>
-              <a href="quienesSomos.html"><p className="opcion">Quienes Somos</p></a>
-              <a href="registroUsuario.html"><p className="opcion">Crear cuenta</p></a>
-              <a href="inicioSesion.html"><p className="opcion">Iniciar Sesión</p></a>
-          </div>
           <div className="banner">
               <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                 <ol className="carousel-indicators">
@@ -62,26 +50,13 @@ const Home: React.FC = () => {
                       parques naturales, jardines botánicos, etc... Además, presentamos información sobre la flora y fauna nativa presente en dichas áreas.
                   </p>
               </div>
-          </div>
-          <div className="secciones-wrapper">
-            <div className="seccion col-xs-1">
-                <div className="ver-mas">
-                    <h2>Parques destacados</h2>
-                    <a href="#Parques">
-                        <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Parques"/>
-                    </a>
-                </div>
-                <div className="containerJqn">
-                    <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
-                    <h2>Lorem Ipsum</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
-                </div>
-            </div>
-            <div className="seccion col-xs-1">
+        </div>
+        <div className="secciones-wrapper">
+          <div className="seccion col-xs-1">
               <div className="ver-mas">
-                  <h2>Noticias destacadas</h2>
-                  <a href="#Noticias">
-                      <img className="arrow" src="assets\icon\arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Noticias"/>
+                  <h2>Parques destacados</h2>
+                  <a href="#Parques">
+                      <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Parques"/>
                   </a>
               </div>
               <div className="containerJqn">
@@ -89,6 +64,19 @@ const Home: React.FC = () => {
                   <h2>Lorem Ipsum</h2>
                   <p>Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
               </div>
+          </div>
+          <div className="seccion col-xs-1">
+            <div className="ver-mas">
+                <h2>Noticias destacadas</h2>
+                <a href="#Noticias">
+                    <img className="arrow" src="assets\icon\arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Noticias"/>
+                </a>
+            </div>
+            <div className="containerJqn">
+                <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
+            </div>
           </div>
           <div className="seccion col-xs-1">
               <div className="ver-mas">
@@ -144,8 +132,8 @@ const Home: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
       </IonContent>
+      <FooterN/>
     </IonPage>
   );
 };
