@@ -1,5 +1,7 @@
 import { IonContent, IonHeader, IonItem, IonMenu, IonMenuToggle, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar } from "@ionic/react";
 import './HeaderN.css';
+import { Route } from "react-router";
+import Home from "../pages/Home";
 
 const HeaderN = () =>{
 
@@ -9,6 +11,9 @@ const HeaderN = () =>{
         },
         {
             name: 'Buscar', url:'/NaturalezApp/Buscar'
+        },
+        {
+            name: 'Recomendar', url:'/NaturalezApp/Recomendar'
         }
     ]
 
@@ -33,7 +38,7 @@ const HeaderN = () =>{
                     <IonContent>
                         {paths.map((item,index)=>(
                             <IonMenuToggle key={index}>
-                                <IonItem routerLink={item.url} routerDirection="forward">
+                                <IonItem routerLink={item.url} routerDirection="none">
                                     {item.name}
                                 </IonItem>
                             </IonMenuToggle>
@@ -41,9 +46,7 @@ const HeaderN = () =>{
                     </IonContent>
                 </IonHeader>
             </IonMenu>
-            <IonRouterOutlet id="main">
-                
-            </IonRouterOutlet>
+            <IonRouterOutlet id="main"></IonRouterOutlet>
         </IonSplitPane>
     )
 }

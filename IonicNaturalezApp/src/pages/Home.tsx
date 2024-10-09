@@ -4,13 +4,13 @@ import './Home.css';
 import '../theme/bootstrap.css';
 
 //Importar componentes
-import HeaderN from '../components/HeaderN';
+import HeaderNo from '../components/HeaderSinMenu';
 import FooterN from '../components/FooterN';
 
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <HeaderN/>
+      <HeaderNo/>
       <IonContent fullscreen>
           <div className="banner">
               <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
