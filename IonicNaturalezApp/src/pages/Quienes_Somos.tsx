@@ -14,14 +14,14 @@ import {
   IonLabel,
   IonImg
 } from '@ionic/react';
-import './Quienes_Somos.css';
+import '../Quienes_Somos.css';
 import '../theme/bootstrap.css';
 
 //Importar componentes
 import FooterN from '../components/FooterN';
 import HeaderN from '../components/HeaderN';
 
-const Quienes_Somos React.FC = () => {
+const Quienes_Somos: React.FC = () => {
     return(
         <IonPage>
             <HeaderN/>

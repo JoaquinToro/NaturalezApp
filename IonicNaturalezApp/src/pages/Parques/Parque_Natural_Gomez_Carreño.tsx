@@ -28,7 +28,7 @@ import '../theme/bootstrap.css';
 import FooterN from '../components/FooterN';
 import HeaderN from '../components/HeaderN';
 
-const Parque_Natural_Gomez_Carreño:React FC = () => {
+const Parque_Natural_Gomez_Carreño: React FC = () => {
     return (
         <IonPage id="main-content">
         <HeaderN/>
