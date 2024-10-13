@@ -26,19 +26,27 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import InicioSesion from './pages/InicioSesion';
+import RegistroUsuario from './pages/RegistroUsuario';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    
+
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
+        <Route exact path="/inicioSesion">
+          <InicioSesion />
         </Route>
         <Route exact path="/">
-          <Redirect to="/home" />
+          <Redirect to="/inicioSesion" />
+        </Route>
+        <Route exact path="/registroUsuario">
+          <RegistroUsuario/>
+        </Route>
+        <Route exact path="/home">
+          <Home />
         </Route>
         <Route exact path="/buscar">
           <Buscar />
