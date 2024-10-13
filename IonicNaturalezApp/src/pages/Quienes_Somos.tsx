@@ -39,5 +39,6 @@ const Quienes_Somos React.FC = () => {
 
             <FooterN/>
         </IonPage>
-    )
+    );
 }
+export default Quienes_Somos;

@@ -67,5 +67,7 @@ const Parque_Natural_Gomez_Carreño:React FC = () => {
         <FooterN/>
         </IonPage>
 
-    )
+    );
 }
+
+export default Parque_Natural_Gomez_Carreño;
