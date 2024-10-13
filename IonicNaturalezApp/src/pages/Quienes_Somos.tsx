@@ -14,7 +14,7 @@ import {
   IonLabel,
   IonImg
 } from '@ionic/react';
-import './Home.css';
+import './Quienes_Somos.css';
 import '../theme/bootstrap.css';
 
 //Importar componentes
