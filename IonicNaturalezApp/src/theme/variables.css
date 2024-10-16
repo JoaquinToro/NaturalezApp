@@ -236,9 +236,34 @@ http://ionicframework.com/docs/theming/ */
 }
 
 :root {
-  --color1: #A5BE7D;
-  --color2: #74A059;
-  --color3: #4E764E;
-  --color4: #4E6A6A;
-  --color5: #2B393B;
+  --color1: #A5BE7D !important;
+  --color2: #74A059 !important;
+  --color3: #4E764E !important;
+  --color4: #4E6A6A !important;
+  --color5: #2B393B !important;
+}
+h1{
+  color: var(--color1);
+}
+
+h2{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 21px;
+  text-transform: capitalize;
+  margin: 1vh 2vw 2vh 2vw;
+  color: var(--color2);
+}
+
+p{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 145%;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  text-align: justify;
 }

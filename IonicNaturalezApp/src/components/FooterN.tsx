@@ -1,10 +1,11 @@
 import { IonFooter } from "@ionic/react";
-import './FooterN.css'
+import './FooterN.css';
+import '../theme/bootstrap.css';
 
 const FooterN = () =>{
     return(
         <IonFooter>
-            <div className="container footer">
+            <div className="footer">
                 <div className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                     <p className="col-md-4 mb-0 text-body-secondary">© 2024 Ingenieria Web PUCV</p>
                     <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">

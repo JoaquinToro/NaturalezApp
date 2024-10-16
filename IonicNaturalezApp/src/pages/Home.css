@@ -1,4 +1,25 @@
 /*Index*/
+.subtitulo{
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 21px;
+  text-transform: capitalize;
+  margin: 1vh 2vw 2vh 2vw;
+  color: var(--color2);
+}
+
+.bajada{
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 145%;
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+  text-align: justify;
+}
 .banner{
     align-items: center;
     text-align: center;
@@ -29,7 +50,7 @@
     flex-wrap: wrap;
     gap: 20px 1vw;
     padding: 10px;
-    justify-content: center;
+    justify-content: center !important;
   }
   
   .seccion {

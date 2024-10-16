@@ -44,7 +44,7 @@ const Recomendar_Parque: React.FC = () =>{
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         </div>
                     </div>
-                    <div className="container agregar">
+                    <div className="agregar">
                         <button title="Agregar decisión" type="button" className="btn-agregar">Agregar</button>    
                     </div>  
                 </div>
