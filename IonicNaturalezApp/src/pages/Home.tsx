@@ -1,12 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { IonContent, IonPage} from '@ionic/react';
+import axios from 'axios';
+
 import './Home.css';
 import '../theme/variables.css';
 //Importar componentes
 import FooterN from '../components/FooterN';
 import HeaderN from '../components/HeaderN';
+import CardDatos from '../components/CardDatos';
 
 const Home: React.FC = () => {
+
+  const placeholder = {
+    image:"assets/placeholder/placeholder-image.jpg",
+    title:"Lorem Ipsum",
+    description:"Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. " +
+                "Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun."
+  };
+
+  const [parquesDestacados, setParquesDestacados] = useState(placeholder);
+  const [floraDestacada, setFloraDestacada] = useState(placeholder);
+  const [faunaDestacada, setFaunaDestacada] = useState(placeholder);
+  const [noticiaDestacada, setNoticiaDestacada] = useState(placeholder);
+  const [tipDestacada, setTipDestacada] = useState(placeholder);
+  const [nosotros, setNosotros] = useState(placeholder);
+  
+  const GetParque=async()=>{
+    try{
+      const response = await axios.get('http://localhost:3001/parque-destacado');
+      console.log(response);
+    }catch{
+      console.log("Error");
+    }
+    return;
+  }
+
+  GetParque();
+
   return (
     <IonPage>
       <HeaderN/>
@@ -58,11 +88,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Parques"/>
                   </a>
               </div>
-              <div className="containerJqn">
-                  <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
-                  <h2 className="subtitulo">Lorem Ipsum</h2>
-                  <p className="bajada">Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
-              </div>
+              <CardDatos title={parquesDestacados.title} description={parquesDestacados.description} image={parquesDestacados.image}/>
           </div>
           <div className="seccion col-xs-1">
             <div className="ver-mas">
@@ -71,11 +97,7 @@ const Home: React.FC = () => {
                     <img className="arrow" src="assets\icon\arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Noticias"/>
                 </a>
             </div>
-            <div className="containerJqn">
-                <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
-                <h2 className="subtitulo">Lorem Ipsum</h2>
-                <p className="bajada">Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
-            </div>
+            <CardDatos title={noticiaDestacada.title} description={noticiaDestacada.description} image={noticiaDestacada.image}/>
           </div>
           <div className="seccion col-xs-1">
               <div className="ver-mas">
@@ -84,11 +106,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Tips"/>
                   </a>
               </div>
-              <div className="containerJqn">
-                  <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
-                  <h2 className="subtitulo">Lorem Ipsum</h2>
-                  <p className="bajada">Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
-              </div>
+              <CardDatos title={tipDestacada.title} description={tipDestacada.description} image={tipDestacada.image}/>
           </div>
           <div className="seccion col-xs-1">
             <div className="ver-mas">
@@ -97,12 +115,7 @@ const Home: React.FC = () => {
                     <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Flora"/>
                 </a>
             </div>
-            <div className="containerJqn">
-                <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
-                <h2 className="subtitulo">Lorem Ipsum</h2>
-                <p className="bajada">Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
-
-            </div>
+            <CardDatos title={floraDestacada.title} description={floraDestacada.description} image={floraDestacada.image}/>  
           </div>
           <div className="seccion col-xs-1">
               <div className="ver-mas">
@@ -111,11 +124,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Fauna"/>
                   </a>
               </div>
-              <div className="containerJqn">
-                  <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
-                  <h2 className="subtitulo">Lorem Ipsum</h2>
-                  <p className="bajada">Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
-              </div>
+              <CardDatos title={faunaDestacada.title} description={faunaDestacada.description} image={faunaDestacada.image}/>
           </div>
           <div className="seccion col-xs-1">
               <div className="ver-mas">
@@ -124,11 +133,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Quienes-Somos"/>
                   </a>
               </div>
-              <div className="containerJqn">
-                  <img src="assets/placeholder/placeholder-image.jpg" alt="placeholder"/>
-                  <h2 className="subtitulo">Lorem Ipsum</h2>
-                  <p className="bajada">Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun.</p>
-              </div>
+              <CardDatos title={nosotros.title} description={nosotros.description} image={nosotros.image}/>
             </div>
           </div>
           <FooterN/>

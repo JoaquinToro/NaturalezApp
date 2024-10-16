@@ -7,8 +7,6 @@ import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
 import Buscar from './pages/Buscar';
 import Recomendar_Parque from './pages/Recomendar_Parque';
-import InicioSesion from './pages/InicioSesion';
-import RegistroUsuario from './pages/RegistroUsuario';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -28,6 +26,8 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import InicioSesion from './pages/InicioSesion';
+import RegistroUsuario from './pages/RegistroUsuario';
 
 setupIonicReact();
 
@@ -36,19 +36,19 @@ const App: React.FC = () => (
 
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-        <Route exact path="/registroUsuario">
-          <RegistroUsuario/>
-        </Route>
-        <Route exact path="/inicioSesion">
+        <Route exact path="/InicioSesion">
           <InicioSesion />
         </Route>
+        <Route exact path="/">
+          <Redirect to="/Home" />
         </Route>
-        <Route exact path="/buscar">
+        <Route exact path="/RegistroUsuario">
+          <RegistroUsuario/>
+        </Route>
+        <Route exact path="/Home">
+          <Home />
+        </Route>
+        <Route exact path="/Buscar">
           <Buscar />
         </Route>
         <Route exact path="/Recomendar_Parque">

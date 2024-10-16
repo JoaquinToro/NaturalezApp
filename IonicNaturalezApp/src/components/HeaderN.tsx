@@ -2,8 +2,6 @@ import { IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenu, 
 import { IonButtonCustomEvent, menuController } from '@ionic/core';
 import { menuOutline } from 'ionicons/icons';
 import './HeaderN.css';
-import { Route } from "react-router";
-import Home from "../pages/Home";
 
 const HeaderN = () =>{
 
@@ -15,22 +13,22 @@ const HeaderN = () =>{
             id:1, name: 'Inicio', url:'/Home'
         },
         {
-            id:2, name: 'Buscar', url:'/buscar'
+            id:2, name: 'Buscar', url:'/Buscar'
         },
         {
             id:3, name: 'Recomendar', url:'/Recomendar_Parque'
         },
         {
-            id:4, name: 'Fauna', url:'/NaturalezApp/Fauna'
+            id:4, name: 'Fauna', url:'/Fauna'
         },
         {
-            id:5, name: 'Flora', url:'/NaturalezApp/Flora'
+            id:5, name: 'Flora', url:'/Flora'
         },
         {
-            id:6, name: 'Quienes Somos', url:'/NaturalezApp/Quienes-Somos'
+            id:6, name: 'Quienes Somos', url:'/Quienes-Somos'
         },
         {
-            id:7, name: 'Inicio Sesión', url:'/NaturalezApp/InicioSesion'
+            id:7, name: 'Inicio Sesión', url:'/InicioSesion'
         }
     ]
 
@@ -38,7 +36,6 @@ const HeaderN = () =>{
         <>
         <IonHeader>
             <IonToolbar>
-                <header>
                     <div id="header" className="header">
                         <a href="/home">
                             <svg role="img" width="37" height="64" viewBox="0 0 37 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,14 +50,13 @@ const HeaderN = () =>{
                         <IonTitle>
                             <IonIcon slot="start" icon={menuOutline}></IonIcon>
                         </IonTitle>
-            <IonButtons slot="start">
-              <IonMenuButton
-                autoHide={true}
-                onClick={() => onClickHandler()}
-              ></IonMenuButton>
-            </IonButtons> 
+                        <IonButtons slot="start">
+                        <IonMenuButton
+                            autoHide={true}
+                            onClick={() => onClickHandler()}>
+                            </IonMenuButton>
+                        </IonButtons> 
                     </div>
-                </header>
             </IonToolbar>
         </IonHeader>
         <IonMenu

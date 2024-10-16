@@ -1,0 +1,105 @@
+/*Index*/
+.subtitulo{
+    font-family: 'Droid Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 21px;
+    text-transform: capitalize;
+    margin: 1vh 2vw 2vh 2vw;
+    color: var(--color2);
+  }
+  
+  .bajada{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 145%;
+    letter-spacing: 0.5px;
+    color: #FFFFFF;
+    text-align: justify;
+  }
+  .banner{
+      align-items: center;
+      text-align: center;
+      margin: 10px;
+      padding: 5px;
+      background-color: var(--color1);
+    }
+    
+    .carousel-item .image-wrapper {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+    .carousel-item .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    #imagen-carrusel{
+      width: 100%;
+      height: 100%;
+    }
+    
+    .secciones-wrapper {
+      display: flex;
+      flex-grow:inherit ; 
+      flex-wrap: wrap;
+      gap: 20px 1vw;
+      padding: 10px;
+      justify-content: center !important;
+    }
+    
+    .seccion {
+      max-width: calc(50% - 20px);
+      margin: 1vh 2%;
+      min-width: 340px;
+    
+    }
+    
+    .arrow{
+      margin-left: 100%;
+      padding-left: 0px;
+    }
+    
+    .ver-mas {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+      padding-right: 30px;
+    }
+    
+    .ver-mas h2 {
+      margin: 0;
+    }
+    
+    .ver-mas a {
+      display: flex;
+      align-items: center;
+    }
+    .containerJqn{
+      background: var(--color4);
+      border-radius: 10px;
+      height: 400px;
+      padding: 10px 2%;
+      position: relative;
+      word-wrap: break-word;
+      max-width: 400px;
+    }
+    
+    .containerJqn img{
+      width: 95%;
+      height: 60%;
+      border-radius: 10%;
+      display: block;
+      margin: auto;
+    }
+    
+    .containerJqn h2{
+      margin: 1vh 1vw;
+    }

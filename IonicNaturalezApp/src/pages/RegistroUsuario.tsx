@@ -1,7 +1,7 @@
 import { IonContent, IonPage } from '@ionic/react';
 import './RegistroUsuario.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'jquery-validation'
+import 'jquery-validation';
 
 
 

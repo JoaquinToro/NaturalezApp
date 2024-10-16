@@ -42,7 +42,7 @@ const InicioSesion: React.FC = () => {
                                 </button> */}
                                 <button
                                     className="btn btn-lg btn-outline-secondary btn-outline-custom btn-lg w-100 mb-3"
-                                    onClick={() => window.location.href = '/registroUsuario'}
+                                    onClick={() => window.location.href = '/RegistroUsuario'}
                                 >
                                     <i className='bx bx-envelope me-1 fs-6'></i>
                                     Crea una cuenta
@@ -86,7 +86,7 @@ const InicioSesion: React.FC = () => {
                                     </div>
                                 </form>
                                 <div className="text-center">
-                                    <small>¿No tienes cuenta?<a href="/registroUsuario" className="fw-bold">Registrate</a></small>
+                                    <small>¿No tienes cuenta?<a href="/RegistroUsuario" className="fw-bold">Registrate</a></small>
                                 </div>
                             </div>
                         </div>
