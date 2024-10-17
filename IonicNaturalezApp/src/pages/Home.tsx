@@ -35,6 +35,7 @@ const Home: React.FC = () => {
       };
       await setParquesDestacados(temp);
       await console.log(parquesDestacados);
+      
     }catch{
       console.log("Error");
     }
