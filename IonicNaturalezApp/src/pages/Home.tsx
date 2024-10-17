@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IonContent, IonPage} from '@ionic/react';
 import axios from 'axios';
 
@@ -28,14 +28,22 @@ const Home: React.FC = () => {
   const GetParque=async()=>{
     try{
       const response = await axios.get('http://localhost:3001/parque-destacado');
-      console.log(response);
+      const temp = {
+        image:"assets/placeholder/placeholder-image.jpg",
+        title:response.data[0].name,
+        description:response.data[0].description,
+      };
+      await setParquesDestacados(temp);
+      await console.log(parquesDestacados);
     }catch{
       console.log("Error");
     }
     return;
   }
 
-  GetParque();
+    useEffect(()=>{
+      GetParque();
+    }, [])
 
   return (
     <IonPage>

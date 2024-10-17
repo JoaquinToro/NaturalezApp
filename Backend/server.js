@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 //metodos
 app.get('/parque-destacado',(req,res)=>{
     console.log("Solicitud para obtener parque destacado...")
-    const query="select * from parque";
+    const query="select * from parque where name='Jardín Botánico Viña del Mar'";
     connection.query(query,(error, resultado)=>{
         console.log("Parque destacado obtenido!")
         res.json(resultado);
