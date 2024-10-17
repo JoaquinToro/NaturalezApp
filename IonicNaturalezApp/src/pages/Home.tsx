@@ -28,14 +28,15 @@ const Home: React.FC = () => {
   const GetParque=async()=>{
     try{
       const response = await axios.get('http://localhost:3001/parque-destacado');
-      const temp = {
-        image:"assets/placeholder/placeholder-image.jpg",
-        title:response.data[0].name,
-        description:response.data[0].description,
-      };
-      await setParquesDestacados(temp);
-      await console.log(parquesDestacados);
+      const randIndex = Math.floor(Math.random() * response.data.length);
       
+      const temp = {
+        image:response.data[randIndex].images ? response.data[randIndex].images.split(',')[0] : "assets/placeholder/placeholder-image.jpg",
+        title:response.data[randIndex].name,
+        description:response.data[randIndex].description,
+      };
+      setParquesDestacados(temp);
+
     }catch{
       console.log("Error");
     }
