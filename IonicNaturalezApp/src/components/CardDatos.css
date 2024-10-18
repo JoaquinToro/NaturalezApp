@@ -91,7 +91,8 @@
       position: relative;
       word-wrap: break-word;
       max-width: 400px;
-      overflow:scroll;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
     }
     
     .containerJqn img{
@@ -107,5 +108,6 @@
     }
 
     .cardContent{
-      overflow: hidden;
+      text-overflow: ellipsis !important;
+      overflow:hidden !important;
     }

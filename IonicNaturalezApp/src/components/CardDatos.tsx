@@ -1,6 +1,6 @@
 import React from "react";
 import { CardInterface } from "../utils/CardInterface";
-
+import './CardDatos.css';
 
 const CardDatos : React.FC<CardInterface> = ({image,title,description}) =>{
 

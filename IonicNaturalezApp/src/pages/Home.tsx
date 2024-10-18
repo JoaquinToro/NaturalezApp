@@ -43,8 +43,27 @@ const Home: React.FC = () => {
     return;
   }
 
+  const GetNoticia=async()=>{
+    try{
+      const response = await axios.get('http://localhost:3001/noticia-destacada');
+      const randIndex = Math.floor(Math.random() * response.data.length);
+      
+      const temp = {
+        image:response.data[randIndex].images ? response.data[randIndex].images.split(',')[0] : "assets/placeholder/placeholder-image.jpg",
+        title:response.data[randIndex].title,
+        description:response.data[randIndex].body,
+      };
+      setNoticiaDestacada(temp);
+
+    }catch{
+      console.log("Error");
+    }
+    return;
+  }
+
     useEffect(()=>{
       GetParque();
+      GetNoticia();
     }, [])
 
   return (

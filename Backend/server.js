@@ -7,7 +7,7 @@ const port=3001;
 app.use(cors());
 app.use(bodyParser.json());
 
-//metodos
+//Métodos GET
 app.get('/parque-destacado',(req,res)=>{
     console.log("Solicitud para obtener parque destacado...")
     const query="select * from parque";
@@ -16,6 +16,17 @@ app.get('/parque-destacado',(req,res)=>{
         res.json(resultado);
     });
 });
+
+app.get('/noticia-destacada',(req,res)=>{
+    console.log("Solicitud para obtener noticia destacado...")
+    const query="select * from noticias";
+    connection.query(query,(error, resultado)=>{
+        console.log("Noticia destacada obtenido!")
+        res.json(resultado);
+    });
+});
+
+
 
 
 app.listen(port,()=>{
