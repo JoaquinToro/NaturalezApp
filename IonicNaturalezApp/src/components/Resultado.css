@@ -1,0 +1,126 @@
+
+.btn{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    width: 120px;
+    height: 50px;
+    background: #A5BE7D;
+    border-radius: 50px;
+    border-color: var(--color5) !important;
+  }
+  
+  
+  button:hover{
+    background-color: var(--color3) !important;
+  }
+  
+  button:active{
+    background-color: var(--color4) !important;
+  }
+  
+  .menu-botones{
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .tabla{
+    justify-content: center !important;
+    display: flex;
+  }
+  
+  .busqueda{
+    max-width: 50rem;
+    max-height: 20rem;
+  }
+  
+  .caja-resultados{
+    margin-top: 1rem;
+  }
+  
+  .resultado {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    border: 1px solid black;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: var(--color1);
+    
+  }
+  
+  .resultado img {
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    margin-right: 10px;
+    flex-shrink: 0; 
+    max-width: 200px;
+  }
+  
+  .info {
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .resultado .info {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+  }
+  
+  .resultado h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .info p{
+    background-color: white;
+  }
+  
+  .info p {
+    color: black;
+    text-align: justify;
+    margin: 5px 0;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4rem;
+    padding: 0.2rem;
+  }
+  
+  .agregar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0px;
+  }
+  
+  .btn-agregar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    position: absolute;
+    width: 260px;
+    height: 30px;
+  
+  
+    background: var(--color4);
+    border-radius: 5px;
+  }

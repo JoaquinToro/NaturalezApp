@@ -82,6 +82,7 @@
       display: flex;
       align-items: center;
     }
+
     .containerJqn{
       background: var(--color4);
       border-radius: 10px;
@@ -90,6 +91,8 @@
       position: relative;
       word-wrap: break-word;
       max-width: 400px;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
     }
     
     .containerJqn img{
@@ -102,4 +105,9 @@
     
     .containerJqn h2{
       margin: 1vh 1vw;
+    }
+
+    .cardContent{
+      text-overflow: ellipsis !important;
+      overflow:hidden !important;
     }

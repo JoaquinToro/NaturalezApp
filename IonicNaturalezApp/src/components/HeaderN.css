@@ -1,6 +1,7 @@
-IonItem{
-  background-color: white !important;
+.input-wrapper{
+  --background-color: var(--color1) !important;
 }
+
 .menu-burger{
     border: none;
     background: transparent;
