@@ -4,6 +4,7 @@ const bodyParser=require("body-parser");
 const cors=require("cors");
 const app=express();
 const port=3001;
+
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -26,7 +27,21 @@ app.get('/noticia-destacada',(req,res)=>{
     });
 });
 
-
+//Métodos POST
+app.post('/buscar-cosa', (req,res)=>{
+    const {name} = req.body;
+    console.log("Solicitud para obtener " + name + "...");
+    const query = "select * from parque where name = ?";
+    connection.query(query,name, (error, resultado) =>{
+        if(error){
+            console.log(error);
+            res.status(500).json();
+        }else{
+            console.log(name + " encontrado!!");
+            res.status(200).json(resultado);
+        }
+    })
+})
 
 
 app.listen(port,()=>{
