@@ -1,5 +1,4 @@
 import { IonContent, IonPage } from '@ionic/react';
-import '../theme/bootstrap.css';
 import './InicioSesion.css';
 
 
@@ -10,7 +9,7 @@ const InicioSesion: React.FC = () => {
                 <div className="row vh-100 g-0">
                     <div className="col-lg-6 position-relative d-none d-lg-block">
                         <div className="bg-holder d-flex flex-column justify-content-center align-items-center">
-                            <h2>Cuidemos de la naturaleza</h2>
+                            <h2 style={{color:'white'}}>Cuidemos de la naturaleza</h2>
                             “El uso apropiado de la ciencia no es conquistar la naturaleza, sino vivir en ella.”
                         </div>
                     </div>
@@ -30,12 +29,12 @@ const InicioSesion: React.FC = () => {
 
                                 <div className="text-center mb-5">
                                     <h1 className="fw-bold">Inicio de Sesión</h1>
-                                    <p>Accede a tu cuenta</p>
+                                    <p style={{marginLeft:'37%', color:'#A5BE7D'}}>Accede a tu cuenta</p>
                                 </div>
 
 
-                                <button className="btn btn-lg btn-outline-secondary btn-outline-custom btn-lg w-100 mb-3">
-                                    <i className='bx bxl-google text-danger me-1 fs-6'></i><a href="#" className="creacionCuentas">Ingresa con Google</a>
+                                <button className="btn btn-lg btn-outline-secondary btn-outline-custom btn-lg w-100 mb-3" onClick={() => window.location.href = '/  '}>
+                                    <i className='bx bxl-google text-danger me-1 fs-6'></i>Ingresa con Google
                                 </button>
                                 {/* <button className="btn btn-lg btn-outline-secondary btn-outline-custom btn-lg w-100 mb-3">
                                     <i className='bx bx-envelope me-1 fs-6' ></i><a href="/registroUsuario" className="creacionCuentas">Crea una cuenta</a>
@@ -77,7 +76,7 @@ const InicioSesion: React.FC = () => {
                                             {/* <input type="checkbox" className="form-check-input" id="formCheck">
                                                 <label for="formChech" className="form-check-label">Recuerdame</label> */}
                                             <input type="checkbox" className="form-check-input" id="formCheck" />
-                                            <label htmlFor='formCheck' className="form-check-label">Recuerdame</label>
+                                            <label htmlFor='formCheck' className="form-check-label" style={{color:'black'}}>Recuerdame</label>
                                         </div>
                                         <div>
                                             <small><a href="#">¿Olvidaste tu contraseña?</a></small>
@@ -86,7 +85,7 @@ const InicioSesion: React.FC = () => {
                                     </div>
                                 </form>
                                 <div className="text-center">
-                                    <small>¿No tienes cuenta?<a href="/RegistroUsuario" className="fw-bold">Registrate</a></small>
+                                    <small style={{color:'black', marginRight:'15px'}}>¿No tienes cuenta? | <a href="/RegistroUsuario" className="fw-bold">Registrate</a></small>
                                 </div>
                             </div>
                         </div>

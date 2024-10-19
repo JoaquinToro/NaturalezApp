@@ -1,6 +1,6 @@
 import { IonFooter } from "@ionic/react";
 import './FooterN.css';
-import '../theme/bootstrap.css';
+//import '../theme/bootstrap.css';
 
 const FooterN = () =>{
     return(

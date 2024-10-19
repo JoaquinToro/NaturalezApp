@@ -12,7 +12,7 @@
 }
 
 .form-container {
-    z-index: 2; /* Para que quede por encima de la bg-holder */
+    z-index: 2; 
     background-color: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 10px;
@@ -62,4 +62,14 @@ img{
 .cuenta-existente{
     text-align: center;
     margin: 10px 0;
+}
+
+
+.alerta {
+    color: red;
+    font-size: 0.875rem; /* Tamaño de fuente más pequeño */
+    margin-top: 0.25rem; /* Separación entre el input y el mensaje */
+    position: absolute;
+    top: 85%; /* Justo debajo del input */
+    left: 0;
 }
