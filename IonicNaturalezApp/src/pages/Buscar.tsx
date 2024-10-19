@@ -1,4 +1,4 @@
-import { IonContent, IonItemDivider, IonPage } from '@ionic/react';
+import { IonCol, IonContent, IonItemDivider, IonPage, IonRow } from '@ionic/react';
 import React, { useState } from 'react';
 import '../theme/bootstrap.css';
 
@@ -6,6 +6,9 @@ import '../theme/bootstrap.css';
 import HeaderN from '../components/HeaderN';
 import FooterN from '../components/FooterN';
 import axios from 'axios';
+import Resultado from '../components/Resultado';
+import { CardInterface } from '../utils/CardInterface';
+import { ResultInterface } from '../utils/ResultInterface';
 
 const Buscar: React.FC =()=>{
 
@@ -17,9 +20,10 @@ const Buscar: React.FC =()=>{
             const response = await axios.post('http://localhost:3001/buscar-cosa',{
                 "name":cosaABuscar
             });
-            let resultadosBusqueda;
             
-            console.log(resultadosBusqueda);
+            setResultados(response.data);
+            
+            console.log(resultados);
         } catch (error) {
             console.log("Error");
         }
@@ -40,9 +44,15 @@ const Buscar: React.FC =()=>{
                 </div>
                 <IonItemDivider className='hr' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <div className="container px-4 py-4 bg-white caja-resultados">
-                        {resultados.map( () => (
-                            <></>
-                        ))}
+                    {
+                        resultados.length > 0 ? resultados.map( (r: ResultInterface, index:number) => (
+                            <IonRow key={r.id || index}>
+                                <IonCol>
+                                    <Resultado r={r} />
+                                </IonCol>
+                            </IonRow>
+                        )) : <></>
+                    }
                     </div>
             </IonItemDivider>
             </IonContent>
