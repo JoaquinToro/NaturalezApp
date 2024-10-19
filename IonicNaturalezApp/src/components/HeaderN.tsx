@@ -1,6 +1,7 @@
 import { IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenu, IonMenuButton, IonMenuToggle, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar } from "@ionic/react";
 import { IonButtonCustomEvent, menuController } from '@ionic/core';
 import { menuOutline } from 'ionicons/icons';
+import '../theme/bootstrap.css';
 import './HeaderN.css';
 
 const HeaderN = () =>{
@@ -34,8 +35,8 @@ const HeaderN = () =>{
 
     return (
         <>
-        <IonHeader>
-            <IonToolbar>
+        <IonHeader placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonToolbar placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <div id="header" className="header">
                         <a href="/home">
                             <svg role="img" width="37" height="64" viewBox="0 0 37 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,33 +47,32 @@ const HeaderN = () =>{
                                 <path d="M33.3183 49.7187H3.02793C2.46251 49.7187 2.01825 49.2235 2.01825 48.5932V41.84C2.01825 41.2097 2.46251 40.7144 3.02793 40.7144H33.3183C33.8837 40.7144 34.328 41.2097 34.328 41.84V48.5932C34.328 49.2235 33.8837 49.7187 33.3183 49.7187Z" fill="#F3C07B"/>
                             </svg>
                         </a>
-                        <IonTitle>NaturalezApp</IonTitle> 
-                        <IonTitle>
-                            <IonIcon slot="start" icon={menuOutline}></IonIcon>
+                        <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>NaturalezApp</IonTitle> 
+                        <IonTitle placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                            <IonIcon slot="start" icon={menuOutline} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}></IonIcon>
                         </IonTitle>
-                        <IonButtons slot="start">
+                        <IonButtons slot="start" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                         <IonMenuButton
-                            autoHide={true}
-                            onClick={() => onClickHandler()}>
+                                autoHide={true}
+                                onClick={() => onClickHandler()} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                             </IonMenuButton>
                         </IonButtons> 
                     </div>
             </IonToolbar>
         </IonHeader>
         <IonMenu
-        side="end"
-        menuId="sidenav"
-        content-id="main"
-        swipe-gesture={true}
-        disabled={false}
-        maxEdgeStart={100}
-        hidden={false}
-        type="push"
-        >
-        <IonContent>
-            <IonList>
+                side="end"
+                menuId="sidenav"
+                content-id="main"
+                swipe-gesture={true}
+                disabled={false}
+                maxEdgeStart={100}
+                hidden={false}
+                type="push" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        >
+        <IonContent placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonList placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 {paths.map( (enlace) => (
-                    <IonItem key={enlace.id} className="opcion" button={true} onClick={()=>{console.log("Redirigiendo a " + enlace.url)}} href={enlace.url}>{enlace.name}</IonItem>
+                    <IonItem key={enlace.id} className="opcion" button={true} onClick={() => { console.log("Redirigiendo a " + enlace.url); } } href={enlace.url} placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>{enlace.name}</IonItem>
                 ) )}
             </IonList>
         </IonContent>
