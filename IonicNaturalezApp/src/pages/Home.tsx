@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { IonContent, IonPage} from '@ionic/react';
 import axios from 'axios';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Keyboard, Pagination, Scrollbar, Zoom } from 'swiper/modules';
 
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/keyboard';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/zoom';
+import '@ionic/react/css/ionic-swiper.css';
 import './Home.css';
 import '../theme/variables.css';
 //Importar componentes
@@ -71,43 +80,11 @@ const Home: React.FC = () => {
       <HeaderN/>
       <IonContent id='main' fullscreen>
           <div className="banner">
-              <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-                <ol className="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div className="carousel-inner">
-                  <div className="carousel-item active">
-                    <div className="image-wrapper">
-                      <img id="imagen-carrusel" src="assets/images/Jardin_Botanico_Vina_Del_Mar.jpg" alt="First slide"/>
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    <div className="image-wrapper">
-                      <img id="imagen-carrusel" src="assets/images/pudu.jpg" alt="Second slide"/>
-                    </div>
-                  </div>
-                  <div className="carousel-item">
-                    <div className="image-wrapper">
-                      <img id="imagen-carrusel" src="assets/images/Flor de la Culebra.jpeg" alt="Third slide"/>
-                    </div>
-                  </div>
-                </div>
-                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                  <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Previous</span>
-                </a>
-                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                  <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </div>
-              <div className="bajada-texto">
-                  <p className="bajada">NaturalezApp es una página web enfocada en conectar con la naturaleza mediante áreas naturales, ofreciendo información sobre
-                      parques naturales, jardines botánicos, etc... Además, presentamos información sobre la flora y fauna nativa presente en dichas áreas.
-                  </p>
-              </div>
+              <Swiper>
+          <SwiperSlide><img id="imagen-carrusel" src="assets/images/Jardin_Botanico_Vina_Del_Mar.jpg" alt="First slide"/></SwiperSlide>
+          <SwiperSlide>Slide 2</SwiperSlide>
+          <SwiperSlide>Slide 3</SwiperSlide>
+        </Swiper>
         </div>
         <div className="secciones-wrapper">
           <div className="seccion col-xs-1">

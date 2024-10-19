@@ -6,7 +6,7 @@ import './InicioSesion.css';
 const InicioSesion: React.FC = () => {
     return (
         <IonPage>
-            <IonContent fullscreen>
+            <IonContent fullscreen placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 <div className="row vh-100 g-0">
                     <div className="col-lg-6 position-relative d-none d-lg-block">
                         <div className="bg-holder d-flex flex-column justify-content-center align-items-center">

@@ -31,14 +31,14 @@ const Buscar: React.FC =()=>{
     return(
         <IonPage>
             <HeaderN/>
-            <IonContent id="main">
+            <IonContent id="main" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                 <div className="container-fluid busqueda">
                     <form className="d-flex">
                         <input id="cajaBusqueda"className="form-control me-2" type="search" value={busqueda} onChange={(e)=>{setBusqueda(e.target.value)}} placeholder="Ingrese su búsqueda..." aria-label="Search"/>
                         <button className="btn btn-outline-success" type="button" onClick={()=>realizarBusqueda(busqueda)}>Buscar</button>
                     </form>
                 </div>
-                <IonItemDivider className='hr'>
+                <IonItemDivider className='hr' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
                     <div className="container px-4 py-4 bg-white caja-resultados">
                         {resultados.map( () => (
                             <></>

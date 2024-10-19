@@ -35,7 +35,7 @@ const App: React.FC = () => (
   <IonApp>
 
     <IonReactRouter>
-      <IonRouterOutlet>
+      <IonRouterOutlet placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         <Route exact path="/InicioSesion">
           <InicioSesion />
         </Route>
