@@ -28,6 +28,8 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import InicioSesion from './pages/InicioSesion';
 import RegistroUsuario from './pages/RegistroUsuario';
+import Parque_Natural_Gomez_Carreño from './pages/Parque_Natural_Gomez_Carreño';
+import Quienes_Somos from './pages/Quienes_Somos';
 
 setupIonicReact();
 
@@ -53,6 +55,12 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/Recomendar_Parque">
           <Recomendar_Parque />
+        </Route>
+        <Route exact path="/Parque_Natural">
+          <Parque_Natural_Gomez_Carreño />
+        </Route>
+        <Route exact path="/Quienes_Somos">
+          <Quienes_Somos/>
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
