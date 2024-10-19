@@ -16,17 +16,6 @@ h1{
     color: var(--color1);
 }
 
-h2{
-    font-family: 'Droid Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 21px;
-    text-transform: capitalize;
-    margin: 1vh 2vw 2vh 2vw;
-    color: var(--color2);
-}
-
 .secciones-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -69,7 +58,6 @@ body{
 }
 
 .bg-holder{
-    background-image: linear-gradient(rgba(5,7,12,0.75),rgba(5,7,12,0.75)),url("../../public/assets/images/img1.jpg");
     position: absolute;
     width: 100%;
     min-height: 100%;
@@ -86,10 +74,7 @@ button.btn{
     font-weight: 700;
     background-color: #A5BE7D;
     color: white;
-}
 
-button.btn i{
-    vertical-align: text-top;
 }
 
 div.divider-content-center{

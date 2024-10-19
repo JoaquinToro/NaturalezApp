@@ -1,6 +1,6 @@
 import { IonContent, IonItemDivider, IonPage } from '@ionic/react';
 import React from 'react';
-import '../theme/bootstrap.css';
+// import '../theme/bootstrap.css';
 
 
 import HeaderN from '../components/HeaderN';
