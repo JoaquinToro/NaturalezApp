@@ -1,25 +1,8 @@
 import React, { useState } from 'react';
 import { 
-  IonContent, 
-  IonHeader, 
+  IonContent,
   IonPage, 
-  IonTitle, 
-  IonToolbar, 
-  IonButtons, 
-  IonMenuButton, 
-  IonCard, 
-  IonCardContent, 
-  IonCardHeader, 
-  IonCardTitle, 
-  IonGrid, 
-  IonRow, 
-  IonCol, 
-  IonImg,
-  IonFooter,
-  IonMenu,
-  IonList,
-  IonItem,
-  IonLabel
+
 } from '@ionic/react';
 import './Parque_Natural_Gomez_Carreño.css';
 import '../theme/bootstrap.css';

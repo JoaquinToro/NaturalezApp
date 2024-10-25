@@ -29,7 +29,7 @@ const InicioSesion: React.FC = () => {
                     <div className="col-lg-6">
                         <div className="row align-items-center justify-content-center h-100 g-0 px-4 px-sm-0">
                             <div className="col col-sm-6 col-lg-7 col-xl-6">
-                                <a href="index.html" className="d-flex justify-content-center mb-4">
+                                <a href="/Home" className="d-flex justify-content-center mb-4">
                                     {/* <img src="./assets/icons/NaturalezApp-Icon.svg" alt="" width="60"> */}
                                     {/* <img src={NaturalezaAppIcon} alt='NaturalezaApp - Icon' /> */}
                                     <img src="assets/icon/NaturalezApp-Icon.svg" alt='NaturalezaApp - Icon' />
