@@ -23,14 +23,14 @@ NaturalezApp utiliza la base de datos relacional SQL propia llamada naturalezapp
 
 ## Instrucciones de uso
 Descargar la base de datos en la carpeta de Backend y subirla a localhost, luego hacer la conexión desde VSCode al servidor en el que haya subido la base de datos
-Se recomiendo abrir 2 terminales; uno para backend y otro para frontend
+Se recomiendo abrir 2 terminales; uno para backend y otro para frontend. Se debe inicializar el backend primero (Aunque la página funciona igual, pero se recomienda).
 
 ### Instrucciones Backend
-cd backend
-npm install
-node server.js
+- cd backend
+- npm install
+- node server.js
 
 ### Instrucciones Frontend
-cd ionicnaturalezapp
-npm install
-ionic serve
+- cd ionicnaturalezapp
+- npm install
+- ionic serve
