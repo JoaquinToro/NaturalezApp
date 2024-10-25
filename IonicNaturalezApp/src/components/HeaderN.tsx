@@ -1,8 +1,9 @@
 import { IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenu, IonMenuButton, IonMenuToggle, IonRouterOutlet, IonSplitPane, IonTitle, IonToolbar } from "@ionic/react";
 import { IonButtonCustomEvent, menuController } from '@ionic/core';
 import { menuOutline } from 'ionicons/icons';
-import '../theme/bootstrap.css';
 import './HeaderN.css';
+import '../theme/bootstrap.css';
+
 
 const HeaderN = () =>{
 

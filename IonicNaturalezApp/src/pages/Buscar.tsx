@@ -1,14 +1,15 @@
 import { IonCol, IonContent, IonItemDivider, IonPage, IonRow } from '@ionic/react';
 import React, { useState } from 'react';
-import '../theme/bootstrap.css';
+import axios from 'axios';
 
 
 import HeaderN from '../components/HeaderN';
 import FooterN from '../components/FooterN';
-import axios from 'axios';
 import Resultado from '../components/Resultado';
 import { CardInterface } from '../utils/CardInterface';
 import { ResultInterface } from '../utils/ResultInterface';
+import './Buscar.css';
+
 
 const Buscar: React.FC =()=>{
 
@@ -35,14 +36,14 @@ const Buscar: React.FC =()=>{
     return(
         <IonPage>
             <HeaderN/>
-            <IonContent id="main" placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+            <IonContent id="main" placeholder={undefined}>
                 <div className="container-fluid busqueda">
                     <form className="d-flex">
                         <input id="cajaBusqueda"className="form-control me-2" type="search" value={busqueda} onChange={(e)=>{setBusqueda(e.target.value)}} placeholder="Ingrese su búsqueda..." aria-label="Search"/>
                         <button className="btn btn-outline-success" type="button" onClick={()=>realizarBusqueda(busqueda)}>Buscar</button>
                     </form>
                 </div>
-                <IonItemDivider className='hr' placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+                <IonItemDivider className='hr' placeholder={undefined}></IonItemDivider>
                     <div className="container px-4 py-4 bg-white caja-resultados">
                     {
                         resultados.length > 0 ? resultados.map( (r: ResultInterface, index:number) => (
@@ -54,7 +55,6 @@ const Buscar: React.FC =()=>{
                         )) : <></>
                     }
                     </div>
-            </IonItemDivider>
             </IonContent>
         <FooterN/>
         </IonPage>

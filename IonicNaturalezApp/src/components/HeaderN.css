@@ -20,7 +20,10 @@
   .body-content.shifted {
     margin-right: 200px;
   }
-  
+
+  ion-item::part(native) {
+    background-color: transparent;
+  }
   .sidenav {
     height: calc(100% - 60px);
     width: 320px;
@@ -40,12 +43,12 @@
     height: 100%;
   }
   
-  .opcion{
-    border: 1px solid black !important;
-    background-color: var(--color1)!important;
-    color: black !important;
-    margin: 0 !important;
-    height: 50px !important;
+  .ion-native{
+    --border: 1px solid black !important;
+    --background-color: var(--color1)!important;
+    --color: black !important;
+    --margin: 0 !important;
+    --height: 50px !important;
     font-family: 'Roboto Mono'!important;
     font-style: normal!important;
     font-weight: 600!important;

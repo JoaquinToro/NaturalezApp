@@ -1,6 +1,6 @@
 export interface ResultInterface{
     id:number,
-    title:string,
+    name:string,
     description:string,
-    image:string
+    images:string
 }

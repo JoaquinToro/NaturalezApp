@@ -44,8 +44,8 @@ const Home: React.FC = () => {
         title:response.data[randIndex].name,
         description:response.data[randIndex].description,
       };
-      setParquesDestacados(temp);
 
+      setParquesDestacados(temp);
     }catch{
       console.log("Error");
     }
@@ -80,11 +80,11 @@ const Home: React.FC = () => {
       <HeaderN/>
       <IonContent id='main' fullscreen>
           <div className="banner">
-              <Swiper>
-          <SwiperSlide><img id="imagen-carrusel" src="assets/images/Jardin_Botanico_Vina_Del_Mar.jpg" alt="First slide"/></SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-        </Swiper>
+            <Swiper className='carrusel'>
+              <SwiperSlide><img id="imagen-carrusel" src="assets/images/Jardin_Botanico_Vina_Del_Mar.jpg" alt="Imagen del Jardín Botánico de Viña del Mar"/></SwiperSlide>
+              <SwiperSlide><img src="assets/images/pudu.jpg" alt="First slide"/></SwiperSlide>
+              <SwiperSlide><img src="assets/images/Chagual Azul.jpg" alt="Imagen del Jardín Botánico de Viña del Mar"/></SwiperSlide>
+            </Swiper>
         </div>
         <div className="secciones-wrapper">
           <div className="seccion col-xs-1">

@@ -28,21 +28,41 @@
     background-color: var(--color1);
   }
   
-  .carousel-item .image-wrapper {
+  IonSwiper{
+    width: unset !important;
+  }
+  .swiper{
+    max-width: 900px !important;
+    max-height: 500px !important;
+    text-align: center !important;
+    align-items: center;
+  }
+
+  .carrusel img {
+    width: 10%; 
+    height: auto; 
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.banner {
     width: 100%;
-    height: 400px;
+    max-height: 400px;
     overflow: hidden;
-  }
-  .carousel-item .image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  #imagen-carrusel{
-    width: 100%;
-    height: 100%;
-  }
+}
+
+@media (max-width: 768px) {
+    .banner {
+        max-height: 300px;
+    }
+
+    .carrusel img {
+        max-height: 250px;
+        max-width: 250px;
+    }
+}
+
+  ¿
   
   .secciones-wrapper {
     display: flex;
