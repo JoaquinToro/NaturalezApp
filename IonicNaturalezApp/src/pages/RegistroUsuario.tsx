@@ -1,6 +1,7 @@
 import { IonContent, IonPage } from '@ionic/react';
 import React, { useEffect, useState } from 'react';
 
+// Validaciones
 import { useForm } from 'react-hook-form'
 
 import './RegistroUsuario.css';
@@ -217,7 +218,7 @@ const RegistroUsuario: React.FC = () => {
                                                 <p className='alerta'>¡Atención! Las contraseñas no coinciden</p>
                                             )}
                                         </div>
-                                        <button className="btn btn-lg w-100" id="btnRegistrar" type="submit">Registrar Usuario</button>
+                                        <button className="btn btn-lg w-100 pt-3" id="btnRegistrar" type="submit">Registrar Usuario</button>
                                     </form>
                                     <div className="cuenta-existente">
                                         <small style={{ color: 'black' }}>¿Ya tienes una cuenta? <a href="/inicioSesion">Inicia Sesión</a></small>
