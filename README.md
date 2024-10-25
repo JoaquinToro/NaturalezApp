@@ -3,47 +3,34 @@
 ## Descripción
 NaturalezApp es una aplicación web/móvil que dispondrá de información sobre parques y reservas naturales dentro de Chile (inicialmente de la V región), noticias y tips sobre el medioambiente.
 
-## Análisis de funcionalidades
-- **Ver información acerca de las áreas naturales**
+## Lectura de archivo JSON
+- En la página RegistroUsuario, se lee el archivo Regiones.json desde ionicnaturalezapp/public/datos/regiones.json para manejar los datos de regiones y comunas
+- En la página Home, se leen ciertas entradas de la base de datos en formato JSON para disponer la información en las cartas
+- En la página Buscar, se lee la base de datos (en formato JSON) para realizar una búsqueda exacta y mostrar los resultados (EJ: buscar "Laguna La Luz")
 
-La aplicación mostrará la información perteneciente a las áreas como su ubicación en Google Maps, la flora y/o fauna presente, una descripción breve sobre el lugar e imágenes del lugar.
+## Base de Datos
+NaturalezApp utiliza la base de datos relacional SQL propia llamada naturalezappDB. La elección de una base de datos relacional SQL es adecuada debido a la naturaleza estructurada e invariable (en su mayoría) de la información que manejará la aplicación. Los datos sobre parques y reservas naturales al igual que su fauna y flora asociada, junto con las noticias y tips relacionados con el medioambiente, requieren un modelo organizado que pueda gestionar relaciones entre entidades como parques, flora, fauna, y noticias.
 
-- **Buscar parques dentro de la aplicación**
-  
-La aplicación permitirá buscar áreas naturales como reservas o parques naturales, jardines botánicos, cerros, entre otros para poder ver su información asociada.
+### ERD NaturalezAppDB
+![Diagrama Entidad Relación de NaturalezAppDB](https://github.com/JoaquinToro/NaturalezApp/blob/EP2/NaturalezAppDB_ERD.png?raw=true)
 
-- **Realizar comentarios sobre los lugares a través de su cuenta de usuario**
-  
-La aplicación contará con la opción de realizar y ver comentarios sobre lás áreas, creando un espacio de interacción entre usuarios.
+## Patrones de diseño
+- En la página de registro de usuario, se muestran alertas concisas, claras y útiles al usuario para ver su error
+- El logo de página lleva a la página principal, siguiendo las convenciones y estándares de la industria
+- La página Home cuenta con un menú tipo hamburguesa, desplegable para ayudar al usuario con un menú de navegación familiar y útil
+- La página Home cuenta con un diseño pensado en el uso de una única mano en una pantalla de móvil, facilitando la navegación por la página.
+- Entre otros...
 
-- **Ver la flora y los lugares en los que se encuentra**
-  
-La aplicación permitirá ver la flora disponible dentro de la base de datos para poder filtrar los lugares en los que se encuentra para brindar una búsqueda más personalizada
+## Instrucciones de uso
+Descargar la base de datos en la carpeta de Backend y subirla a localhost, luego hacer la conexión desde VSCode al servidor en el que haya subido la base de datos
+Se recomiendo abrir 2 terminales; uno para backend y otro para frontend
 
-- **Ver la fauna y los lugares en los que se encuentra**
-  
-La aplicación permitirá ver la fauna disponible dentro de la base de datos para poder filtrar los lugares en los que se encuentra para brindar una búsqueda más personalizada
+### Instrucciones Backend
+cd backend
+npm install
+node server.js
 
-- **Recomendar un área natural en base a los filtros del usuario**
-  
-La aplicación le dará al usuario opciones de filtro y la aplicación escogerá un lugar que cuente con dichas características de entre todos los posibles para recomendárselo, llevándolo a la página asociada
-
-- **Mostrar noticias relacionadas al cuidado del medioambiente como el cambio climático o novedades de algún área**
-  
-La aplicación tendrá un apartado de noticias que mostrará las principales novedades sobre la actualidad medioambiental
-
-- **Enseñar tips para el cuidado del medioambiente**
-  
-La aplicación tendrá un apartado de tips sobre el cuidado del medioambiente con el fin de generar conciencia sobre éste
-
-- **Mostrar peligros asociados a los espacios naturales**
-  
-La aplicación mostrará posibles peligros asociados a determinados lugares como lagunas o cerros (aguas profundas, plantas venenosas, etc...)
-
-## Prototipado móvil en Figma
-
-[Prototipado Figma NaturalezApp](https://www.figma.com/design/a9BmdOW5ujVHcSpq6amhGC/NaturalezApp?m=auto&t=qrzBa5HjuXJdrT0v-6)
-
-## Maquetación responsiva
-
-La aplicación será desarrollada con HTML5, CSS3 y JavaScript, utilizando frameworks como Bootstrap para la maquetación responsiva.
+### Instrucciones Frontend
+cd ionicnaturalezapp
+npm install
+ionic serve
