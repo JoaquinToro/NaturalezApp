@@ -9,7 +9,7 @@ NaturalezApp es una aplicación web/móvil que dispondrá de información sobre 
 - En la página Buscar, se lee la base de datos (en formato JSON) para realizar una búsqueda exacta y mostrar los resultados (EJ: buscar "Laguna La Luz")
 
 ## Base de Datos
-NaturalezApp utiliza la base de datos relacional SQL propia llamada naturalezappDB. La elección de una base de datos relacional SQL es adecuada debido a la naturaleza estructurada e invariable (en su mayoría) de la información que manejará la aplicación. Los datos sobre parques y reservas naturales al igual que su fauna y flora asociada, junto con las noticias y tips relacionados con el medioambiente, requieren un modelo organizado que pueda gestionar relaciones entre entidades como parques, flora, fauna, y noticias.
+NaturalezApp utiliza la base de datos relacional SQL propia llamada naturalezappDB. La elección de una base de datos relacional SQL es adecuada debido a la naturaleza estructurada e invariable (en su mayoría) de la información que manejará la aplicación. Los datos sobre parques y reservas naturales al igual que su fauna y flora asociada, junto con las noticias y tips relacionados con el medioambiente, requieren un modelo organizado que pueda gestionar relaciones entre entidades como parques, flora, fauna, y noticias. Cabe destacar, que los desarrolladores poseen más conocimientos y experiencia en SQL, lo que permite garantizar una gestión y optimización superior en comparación a otros lenguajes y/o modelos de bases de datos.
 
 ### ERD NaturalezAppDB
 ![Diagrama Entidad Relación de NaturalezAppDB](https://github.com/JoaquinToro/NaturalezApp/blob/EP2/NaturalezAppDB_ERD.png?raw=true)
