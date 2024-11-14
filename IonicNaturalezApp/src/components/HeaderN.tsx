@@ -21,17 +21,21 @@ const HeaderN = () =>{
             id:3, name: 'Recomendar', url:'/Recomendar_Parque'
         },
         {
-            id:4, name: 'Fauna', url:'/Fauna'
+            id:4, name: 'Parques', url:'/Parques'
         },
         {
-            id:5, name: 'Flora', url:'/Flora'
+            id:5, name: 'Fauna', url:'/Fauna'
         },
         {
-            id:6, name: 'Quienes Somos', url:'/Quienes-Somos'
+            id:6, name: 'Flora', url:'/Flora'
         },
         {
-            id:7, name: 'Inicio Sesión', url:'/InicioSesion'
+            id:7, name: 'Quienes Somos', url:'/Quienes_Somos'
+        },
+        {
+            id:8, name: 'Inicio Sesión', url:'/InicioSesion'
         }
+
     ]
 
     return (

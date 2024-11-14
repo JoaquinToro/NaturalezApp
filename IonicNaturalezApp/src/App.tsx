@@ -9,6 +9,7 @@ import Buscar from './pages/Buscar';
 import Recomendar_Parque from './pages/Recomendar_Parque';
 import InicioSesion from './pages/InicioSesion';
 import RegistroUsuario from './pages/RegistroUsuario';
+import Parques from './pages/Parques';
 import Parque_Natural_Gomez_Carreño from './pages/Parque_Natural_Gomez_Carreño';
 import Quienes_Somos from './pages/Quienes_Somos';
 
@@ -31,6 +32,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+
 
 setupIonicReact();
 
@@ -56,6 +58,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/Recomendar_Parque">
           <Recomendar_Parque />
+        </Route>
+        <Route exact path="/Parques">
+          <Parques />
         </Route>
         <Route exact path="/Parque_Natural">
           <Parque_Natural_Gomez_Carreño />

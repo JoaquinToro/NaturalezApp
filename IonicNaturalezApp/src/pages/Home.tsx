@@ -36,7 +36,7 @@ const Home: React.FC = () => {
   
   const GetParque=async()=>{
     try{
-      const response = await axios.get('http://localhost:3001/parque-destacado');
+      const response = await axios.get('http://localhost:3001/getParques');
       const randIndex = Math.floor(Math.random() * response.data.length);
       
       const temp = {
@@ -58,7 +58,7 @@ const Home: React.FC = () => {
       const randIndex = Math.floor(Math.random() * response.data.length);
       
       const temp = {
-        image:response.data[randIndex].images ? response.data[randIndex].images.split(',')[0] : "assets/placeholder/placeholder-image.jpg",
+        image:response.data[randIndex].images ? response.data[randIndex].images : "assets/placeholder/placeholder-image.jpg",
         title:response.data[randIndex].title,
         description:response.data[randIndex].body,
       };
@@ -94,7 +94,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Parques"/>
                   </a>
               </div>
-              <CardDatos title={parquesDestacados.title} description={parquesDestacados.description} image={parquesDestacados.image}/>
+              <CardDatos c={parquesDestacados}/>
           </div>
           <div className="seccion col-xs-1">
             <div className="ver-mas">
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
                     <img className="arrow" src="assets\icon\arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Noticias"/>
                 </a>
             </div>
-            <CardDatos title={noticiaDestacada.title} description={noticiaDestacada.description} image={noticiaDestacada.image}/>
+            <CardDatos c={noticiaDestacada}/>
           </div>
           <div className="seccion col-xs-1">
               <div className="ver-mas">
@@ -112,7 +112,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Tips"/>
                   </a>
               </div>
-              <CardDatos title={tipDestacada.title} description={tipDestacada.description} image={tipDestacada.image}/>
+              <CardDatos c={tipDestacada}/>
           </div>
           <div className="seccion col-xs-1">
             <div className="ver-mas">
@@ -121,7 +121,7 @@ const Home: React.FC = () => {
                     <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Flora"/>
                 </a>
             </div>
-            <CardDatos title={floraDestacada.title} description={floraDestacada.description} image={floraDestacada.image}/>  
+            <CardDatos c={floraDestacada}/>  
           </div>
           <div className="seccion col-xs-1">
               <div className="ver-mas">
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Fauna"/>
                   </a>
               </div>
-              <CardDatos title={faunaDestacada.title} description={faunaDestacada.description} image={faunaDestacada.image}/>
+              <CardDatos c={faunaDestacada}/>
           </div>
           <div className="seccion col-xs-1">
               <div className="ver-mas">
@@ -139,7 +139,7 @@ const Home: React.FC = () => {
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Quienes-Somos"/>
                   </a>
               </div>
-              <CardDatos title={nosotros.title} description={nosotros.description} image={nosotros.image}/>
+              <CardDatos c={nosotros}/>
             </div>
           </div>
           <FooterN/>

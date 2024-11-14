@@ -9,7 +9,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 //Métodos GET
-app.get('/parque-destacado',(req,res)=>{
+app.get('/getParques',(req,res)=>{
     console.log("Solicitud para obtener parque destacado...")
     const query="select * from parque";
     connection.query(query,(error, resultado)=>{
