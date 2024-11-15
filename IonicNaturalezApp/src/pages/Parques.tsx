@@ -21,7 +21,12 @@ const Parques : React.FC= () => {
     const GetParques=async()=>{
         try{
           const response = await axios.get('http://localhost:3001/getParques');
-          setParques(response.data);
+          const temp = response.data.map((item: { images: any; name: any; description: any; }) => ({
+            image: item.images ? item.images : "assets/placeholder/placeholder-image.jpg",
+            title: item.name,
+            description: item.description,
+          }));
+          setParques(temp);
         }catch{
           console.log("Error");
         }
@@ -52,8 +57,9 @@ const Parques : React.FC= () => {
                     }
                 </div>
                 </IonGrid>
+                <FooterN/>
             </IonContent>
-            <FooterN/>
+            
         </IonPage>
     );
 }

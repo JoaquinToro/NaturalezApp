@@ -10,6 +10,7 @@ import Recomendar_Parque from './pages/Recomendar_Parque';
 import InicioSesion from './pages/InicioSesion';
 import RegistroUsuario from './pages/RegistroUsuario';
 import Parques from './pages/Parques';
+import Noticias from './pages/Noticias';
 import Parque_Natural_Gomez_Carreño from './pages/Parque_Natural_Gomez_Carreño';
 import Quienes_Somos from './pages/Quienes_Somos';
 
@@ -61,6 +62,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/Parques">
           <Parques />
+        </Route>
+        <Route exact path="/Noticias">
+          <Noticias />
         </Route>
         <Route exact path="/Parque_Natural">
           <Parque_Natural_Gomez_Carreño />

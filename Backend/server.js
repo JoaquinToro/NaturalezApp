@@ -18,7 +18,7 @@ app.get('/getParques',(req,res)=>{
     });
 });
 
-app.get('/noticia-destacada',(req,res)=>{
+app.get('/getNoticias',(req,res)=>{
     console.log("Solicitud para obtener noticia destacado...")
     const query="select * from noticias";
     connection.query(query,(error, resultado)=>{

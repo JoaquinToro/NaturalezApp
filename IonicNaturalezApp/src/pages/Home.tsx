@@ -31,8 +31,7 @@ const Home: React.FC = () => {
   const [floraDestacada, setFloraDestacada] = useState(placeholder);
   const [faunaDestacada, setFaunaDestacada] = useState(placeholder);
   const [noticiaDestacada, setNoticiaDestacada] = useState(placeholder);
-  const [tipDestacada, setTipDestacada] = useState(placeholder);
-  const [nosotros, setNosotros] = useState(placeholder);
+
   
   const GetParque=async()=>{
     try{
@@ -54,7 +53,7 @@ const Home: React.FC = () => {
 
   const GetNoticia=async()=>{
     try{
-      const response = await axios.get('http://localhost:3001/noticia-destacada');
+      const response = await axios.get('http://localhost:3001/getNoticias');
       const randIndex = Math.floor(Math.random() * response.data.length);
       
       const temp = {
@@ -106,15 +105,6 @@ const Home: React.FC = () => {
             <CardDatos c={noticiaDestacada}/>
           </div>
           <div className="seccion col-xs-1">
-              <div className="ver-mas">
-                  <h2 className="subtitulo">Tips medioambientales</h2>
-                  <a href="#Tips">
-                      <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Tips"/>
-                  </a>
-              </div>
-              <CardDatos c={tipDestacada}/>
-          </div>
-          <div className="seccion col-xs-1">
             <div className="ver-mas">
                 <h2 className="subtitulo">Flora destacada</h2>
                 <a href="#Flora">
@@ -132,17 +122,8 @@ const Home: React.FC = () => {
               </div>
               <CardDatos c={faunaDestacada}/>
           </div>
-          <div className="seccion col-xs-1">
-              <div className="ver-mas">
-                  <h2 className="subtitulo">Nosotros</h2>
-                  <a href="#Quienes-Somos">
-                      <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Quienes-Somos"/>
-                  </a>
-              </div>
-              <CardDatos c={nosotros}/>
-            </div>
-          </div>
-          <FooterN/>
+        </div>
+        <FooterN/>
       </IonContent>
     </IonPage>
   );
