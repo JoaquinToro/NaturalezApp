@@ -30,10 +30,13 @@ const HeaderN = () =>{
             id:6, name: 'Flora', url:'/Flora'
         },
         {
-            id:7, name: 'Quienes Somos', url:'/Quienes_Somos'
+            id:7, name: 'Noticias', url:'/Noticias'
         },
         {
-            id:8, name: 'Inicio Sesión', url:'/InicioSesion'
+            id:8, name: 'Quienes Somos', url:'/Quienes_Somos'
+        },
+        {
+            id:9, name: 'Inicio Sesión', url:'/InicioSesion'
         }
 
     ]
