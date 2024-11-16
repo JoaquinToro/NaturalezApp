@@ -22,7 +22,7 @@ const Parques : React.FC= () => {
         try{
           const response = await axios.get('http://localhost:3001/getParques');
           const temp = response.data.map((item: { images: any; name: any; description: any; }) => ({
-            image: item.images ? item.images : "assets/placeholder/placeholder-image.jpg",
+            image: item.images? item.images.split(',')[0]  : "assets/placeholder/placeholder-image.jpg",
             title: item.name,
             description: item.description,
           }));

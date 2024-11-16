@@ -21,6 +21,7 @@ import CardDatos from '../components/CardDatos';
 const Home: React.FC = () => {
 
   const placeholder = {
+    id:0,
     image:"assets/placeholder/placeholder-image.jpg",
     title:"Lorem Ipsum",
     description:"Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. " +
@@ -39,6 +40,7 @@ const Home: React.FC = () => {
       const randIndex = Math.floor(Math.random() * response.data.length);
       
       const temp = {
+        id: response.data[randIndex].id,
         image:response.data[randIndex].images ? response.data[randIndex].images.split(',')[0] : "assets/placeholder/placeholder-image.jpg",
         title:response.data[randIndex].name,
         description:response.data[randIndex].description,
@@ -57,6 +59,7 @@ const Home: React.FC = () => {
       const randIndex = Math.floor(Math.random() * response.data.length);
       
       const temp = {
+        id: response.data[randIndex].id_noticia,
         image:response.data[randIndex].images ? response.data[randIndex].images : "assets/placeholder/placeholder-image.jpg",
         title:response.data[randIndex].title,
         description:response.data[randIndex].body,
@@ -98,7 +101,7 @@ const Home: React.FC = () => {
           <div className="seccion col-xs-1">
             <div className="ver-mas">
                 <h2 className="subtitulo">Noticias destacadas</h2>
-                <a href="#Noticias">
+                <a href={`/Noticias/${noticiaDestacada.id}`}>
                     <img className="arrow" src="assets\icon\arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Noticias"/>
                 </a>
             </div>

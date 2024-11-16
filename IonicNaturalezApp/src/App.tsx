@@ -1,5 +1,6 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
@@ -13,6 +14,7 @@ import Parques from './pages/Parques';
 import Noticias from './pages/Noticias';
 import Parque_Natural_Gomez_Carreño from './pages/Parque_Natural_Gomez_Carreño';
 import Quienes_Somos from './pages/Quienes_Somos';
+import Noticia from './pages/Noticia';
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -35,6 +37,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 
+
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -42,7 +45,7 @@ const App: React.FC = () => (
 
     <IonReactRouter>
       <IonRouterOutlet placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        <Route exact path="/InicioSesion">
+        <Route path="/InicioSesion">
           <InicioSesion />
         </Route>
         <Route exact path="/">
@@ -65,6 +68,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/Noticias">
           <Noticias />
+        </Route>
+        <Route exact path="/Noticias/:id">
+          <Noticia />
         </Route>
         <Route exact path="/Parque_Natural">
           <Parque_Natural_Gomez_Carreño />
