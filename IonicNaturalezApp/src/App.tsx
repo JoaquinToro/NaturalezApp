@@ -72,7 +72,7 @@ const App: React.FC = () => (
         <Route exact path="/Noticias/:id">
           <Noticia />
         </Route>
-        <Route exact path="/Parque_Natural">
+        <Route exact path="/Parque_Natural/:parkName">
           <Parque_Natural_Gomez_Carreño />
         </Route>
         <Route exact path="/Quienes_Somos">
