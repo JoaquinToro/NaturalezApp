@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 // Validaciones
 import { useForm } from 'react-hook-form'
 
+
 import './RegistroUsuario.css';
 
 const insertUser = async (data: any, reset: () => void) => {
