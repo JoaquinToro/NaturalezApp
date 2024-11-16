@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonPage, } from '@ionic/react';
+import {  IonContent, IonPage, } from '@ionic/react';
 import './InicioSesion.css';
 
 // Validaciones
