@@ -4,18 +4,48 @@ import React, { useEffect, useState } from 'react';
 // Validaciones
 import { useForm } from 'react-hook-form'
 
+
 import './RegistroUsuario.css';
 
-const insertUser = () => {
-    console.log("Hola");
+const insertUser = async (data: any, reset: () => void) => {
+    const formattedData = {
+        id_usuario: 1, // Agregar el campo id_usuario
+        nombre: data.nombre,
+        password: data.password,
+        email: data.email,
+        id_region: parseInt(data.region, 10), // Convertir región a entero
+    };
+    delete data.confPassword;
+    console.log('Datos enviados al servidor:', formattedData);
+    try {
+        const response = await fetch("http://localhost:3001/registroUsuario", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formattedData),
+        });
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Usuario registrado:', result);
+            alert('Usuario registrado con éxito');
+            reset();
+        } else {
+            const errorResponse = await response.json();
+            console.error('Error al registrar el usuario:', errorResponse);
+            alert('Error al registrar el usuario');
+        }
+    } catch (error) {
+        console.error('Error en la solicitud:', error);
+        alert('Error de conexión');
+    }
 }
 
 const RegistroUsuario: React.FC = () => {
 
-    const { register, formState: { errors }, handleSubmit, watch } = useForm();
+    const { register, formState: { errors }, handleSubmit, watch, reset } = useForm();
 
     const [regiones, setRegiones] = useState<any[]>([]); // Para almacenar las regiones
-    const [comunas, setComunas] = useState<string[]>([]); // Para almacenar las comunas
     const [selectedRegion, setSelectedRegion] = useState<string>(''); // Región seleccionada
 
     const password = watch("password")
@@ -23,7 +53,10 @@ const RegistroUsuario: React.FC = () => {
     useEffect(() => {
         const fetchRegiones = async () => {
             try {
-                const response = await fetch('/datos/regiones.json'); // Ruta del archivo JSON
+                const response = await fetch("http://localhost:3001/regiones"); // Endpoint del backend
+                if (!response.ok) {
+                    throw new Error('Error al obtener regiones');
+                }
                 const data = await response.json();
                 setRegiones(data); // Guardar las regiones en el estado
             } catch (error) {
@@ -33,15 +66,11 @@ const RegistroUsuario: React.FC = () => {
         fetchRegiones();
     }, []);
 
-    const handleRegionChange = (regionName: string) => {
-        setSelectedRegion(regionName); // Guardar la región seleccionada
-        const region = regiones.find((r) => r.nombre === regionName); // Buscar la región seleccionada
-        if (region) {
-            setComunas(region.comunas); // Actualizar las comunas
-        } else {
-            setComunas([]); // Si no se encuentra, limpiar las comunas
-        }
+    const handleRegionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const regionName = event.target.value; // Obtener el valor seleccionado
+        setSelectedRegion(regionName); // Actualizar el estado
     };
+    
 
     return (
         <IonPage>
@@ -63,13 +92,13 @@ const RegistroUsuario: React.FC = () => {
                                     <div className="text-center mb-3">
                                         <h3 className="fw-bold" style={{ marginTop: 0 }}>Registro de cuenta</h3  >
                                     </div>
-                                    <form onSubmit={handleSubmit(insertUser)}>
+                                    <form onSubmit={handleSubmit((data) => insertUser(data, reset))}>
                                         <div className="input-group mb-3" >
                                             <span className="input-group-text">
                                                 <i className="bx bx-user"></i>
                                             </span>
                                             {/* <input type="text" className="form-control form-control-lg fs-6" placeholder="Usuario" name="nombre" id="nombre" /> */}
-                                            <input type="text" className="form-control form-control-lg fs-6" placeholder="Nombre" id="nombre" {...register("nombre", { required: true, minLength: 2, maxLength: 50, pattern: /^[A-Za-z]+$/i })} />
+                                            <input type="text" className="form-control form-control-lg fs-6" placeholder="Nombre" id="nombre" {...register("nombre", { required: true, minLength: 2, maxLength: 50, pattern: /^[A-Za-z ]+$/i })} />
                                             {
                                                 errors.nombre?.type === "required" && (
                                                     <p className='alerta'>¡Alerta! Ingresa el nombre</p>
@@ -93,32 +122,6 @@ const RegistroUsuario: React.FC = () => {
                                         </div>
                                         <div className="input-group mb-3">
                                             <span className="input-group-text">
-                                                <i className="bx bx-user"></i>
-                                            </span>
-                                            <input type="text" className="form-control form-control-lg fs-6" placeholder="Apellidos" id="apellidos" {...register("apellidos", { required: true, minLength: 2, maxLength: 50, pattern: /^[A-Za-z]+$/i })} />
-                                            {
-                                                errors.apellidos?.type === "required" && (
-                                                    <p className='alerta'>¡Alerta! Ingresa tus apellidos</p>
-                                                )
-                                            }
-                                            {
-                                                errors.apellidos?.type === "minLength" && (
-                                                    <p className='alerta'>¡Atención! Ingresa como minimo 2 caracteres</p>
-                                                )
-                                            }
-                                            {
-                                                errors.apellidos?.type === "maxLength" && (
-                                                    <p className='alerta'>¡Atención! Ingresa como maximo 50 caracteres</p>
-                                                )
-                                            }
-                                            {
-                                                errors.apellidos?.type === "pattern" && (
-                                                    <p className='alerta'>¡Atención! Ingresa un apellido valido</p>
-                                                )
-                                            }
-                                        </div>
-                                        <div className="input-group mb-3">
-                                            <span className="input-group-text">
                                                 <i className='bx bx-envelope'></i>
                                             </span>
                                             <input type="email" className="form-control form-control-lg fs-6" placeholder="Correo electrónico" id="email" {...register("email", { pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i, required: true })} />
@@ -137,12 +140,12 @@ const RegistroUsuario: React.FC = () => {
                                             <span className="input-group-text">
                                                 <i className='bx bx-buildings'></i>
                                             </span>
-                                            <select className="form-select" id="region" {...register("region", { required: true })} value={selectedRegion} onChange={(e) => handleRegionChange(e.target.value)}>
+                                            <select className="form-select" id="region" {...register("region", { required: true })} value={selectedRegion} onChange={handleRegionChange}>
                                                 <option value="">Selecciona una región</option>
                                                 {
-                                                    regiones.map((region, index) => (
-                                                        <option key={index} value={region.nombre}>
-                                                            {region.nombre}
+                                                    regiones.map((region) => (
+                                                        <option key={region.id_region} value={region.id_region}>
+                                                            {region.name}
                                                         </option>
                                                     ))
                                                 }
@@ -155,29 +158,9 @@ const RegistroUsuario: React.FC = () => {
                                         </div>
                                         <div className="input-group mb-3">
                                             <span className="input-group-text">
-                                                <i className='bx bx-buildings'></i>
-                                            </span>
-                                            <select className="form-select" id="comuna" {...register("comuna", { required: true })} disabled={!selectedRegion}>
-                                                <option value="">Selecciona una comuna</option>
-                                                {
-                                                    comunas.map((comuna, index) => (
-                                                        <option key={index} value={comuna}>
-                                                            {comuna}
-                                                        </option>
-                                                    ))
-                                                }
-                                            </select>
-                                            {
-                                                errors.comuna?.type === "required" && (
-                                                    <p className='alerta'>¡Alerta! Selecciona una comuna</p>
-                                                )
-                                            }
-                                        </div>
-                                        <div className="input-group mb-3">
-                                            <span className="input-group-text">
                                                 <i className='bx bx-shield-quarter'></i>
                                             </span>
-                                            <input type="password" className="form-control form-control-lg fs-6" placeholder="Contraseña" id="password" {...register("password", { required: true, minLength: 8, maxLength: 50, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!%*?&])[A-Za-z\d.@$!%*?&]{8,}$/ })} />
+                                            <input type="password" className="form-control form-control-lg fs-6" placeholder="Contraseña" id="password" {...register("password", { required: true, minLength: 8, maxLength: 50, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};:'",./?\\|`~])[A-Za-z\d!@#$%^&*()_+\-=[\]{};:'",./?\\|`~]{8,}$/ })} />
                                             {
                                                 errors.password?.type === "required" && (
                                                     <p className='alerta'>¡Alerta! Ingresa una contraseña</p>
@@ -198,7 +181,7 @@ const RegistroUsuario: React.FC = () => {
                                             <span className="input-group-text">
                                                 <i className='bx bx-shield-quarter'></i>
                                             </span>
-                                            <input type="password" className="form-control form-control-lg fs-6" placeholder="Confirma contraseña" id="confPassword" {...register("confPassword", { required: true, minLength: 8, maxLength: 50, validate: (value) => { if (value === password){return true;}else{return "Las contraseñas no coinciden";}}, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!%*?&])[A-Za-z\d.@$!%*?&]{8,}$/ })} />
+                                            <input type="password" className="form-control form-control-lg fs-6" placeholder="Confirma contraseña" id="confPassword" {...register("confPassword", { required: true, minLength: 8, maxLength: 50, validate: (value) => { if (value === password) { return true; } else { return "Las contraseñas no coinciden"; } }, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};:'",./?\\|`~])[A-Za-z\d!@#$%^&*()_+\-=[\]{};:'",./?\\|`~]{8,}$/ })} />
                                             {
                                                 errors.confPassword?.type === "required" && (
                                                     <p className='alerta'>¡Alerta! Ingresa una contraseña</p>
