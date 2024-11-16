@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 //Métodos GET
 app.get('/getParques',(req,res)=>{
-    console.log("Solicitud para obtener parque destacado...")
+    console.log("Solicitud para obtener todos los parques...")
     const query="select * from parque";
     connection.query(query,(error, resultado)=>{
         console.log("Parque destacado obtenido!")
@@ -19,11 +19,29 @@ app.get('/getParques',(req,res)=>{
 });
 
 app.get('/getNoticias',(req,res)=>{
-    console.log("Solicitud para obtener noticia destacado...")
+    console.log("Solicitud para obtener todas las noticias...")
     const query="select * from noticias";
     connection.query(query,(error, resultado)=>{
-        console.log("Noticia destacada obtenido!")
+        console.log("Noticias obtenidas!")
         res.json(resultado);
+    });
+});
+
+app.get('/getNoticias/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(`Solicitud para obtener la noticia con id ${id}...`);
+    const query = "SELECT * FROM noticias WHERE id_noticia = ?";
+    connection.query(query, [id], (error, resultado) => {
+        if (error) {
+            console.error("Error al obtener la noticia:", error);
+            return res.status(500).json({ message: "Error al obtener la noticia." });
+        }
+        if (resultado.length === 0) {
+            console.log("No se encontró ninguna noticia con ese id.");
+            return res.status(404).json({ message: "Noticia no encontrada." });
+        }
+        console.log(`Noticia con id ${id} encontrada!`);
+        res.status(200).json(resultado);
     });
 });
 
