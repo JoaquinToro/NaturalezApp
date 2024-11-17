@@ -15,7 +15,8 @@ import Noticias from './pages/Noticias';
 import Parque_Natural_Gomez_Carreño from './pages/Parque_Natural_Gomez_Carreño';
 import Quienes_Somos from './pages/Quienes_Somos';
 import Noticia from './pages/Noticia';
-
+import Floras from './pages/Floras';
+import Faunas from './pages/Faunas';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,6 +36,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+
 
 
 
@@ -66,13 +68,19 @@ const App: React.FC = () => (
         <Route exact path="/Parques">
           <Parques />
         </Route>
+        <Route exact path="/Flora">
+          <Floras />
+        </Route>
+        <Route exact path="/Fauna">
+          <Faunas />
+        </Route>
         <Route exact path="/Noticias">
           <Noticias />
         </Route>
         <Route exact path="/Noticias/:id">
           <Noticia />
         </Route>
-        <Route exact path="/Parque_Natural/:parkName">
+        <Route exact path="/Parques/:parkName">
           <Parque_Natural_Gomez_Carreño />
         </Route>
         <Route exact path="/Quienes_Somos">
