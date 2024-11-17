@@ -58,8 +58,8 @@ const Buscar: React.FC =()=>{
                         )) : <></>
                     }
                     </div>
+                <FooterN/>
             </IonContent>
-        <FooterN/>
         </IonPage>
     );
 }

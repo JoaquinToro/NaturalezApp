@@ -48,8 +48,8 @@ const Recomendar_Parque: React.FC = () =>{
                         <button title="Agregar decisión" type="button" className="btn-agregar">Agregar</button>    
                     </div>  
                 </div>
+                <FooterN/>
             </IonContent>
-            <FooterN/>
         </IonPage>
     );
 }
