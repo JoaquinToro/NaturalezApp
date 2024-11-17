@@ -18,8 +18,11 @@ const Buscar: React.FC =()=>{
 
     const realizarBusqueda = async (cosaABuscar:string) =>{
         try {
-            const response = await axios.post('http://localhost:3001/buscar-cosa',{
-                "name":cosaABuscar
+            const response = await axios.get('http://localhost:3001/buscar-cosa',{
+                params: {
+                    name: cosaABuscar,
+                    table: "parque"
+                }
             });
             
             setResultados(response.data);
