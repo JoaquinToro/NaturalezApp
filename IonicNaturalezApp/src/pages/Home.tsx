@@ -92,7 +92,7 @@ const Home: React.FC = () => {
           <div className="seccion col-xs-1">
               <div className="ver-mas">
                   <h2 className="subtitulo">Parques destacados</h2>
-                  <a href="#Parques">
+                  <a href={`/Parques/${parquesDestacados.title}`}>
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Parques"/>
                   </a>
               </div>
