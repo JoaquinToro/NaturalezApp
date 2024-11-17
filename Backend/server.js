@@ -77,6 +77,33 @@ app.get('/getParque/:name', (req, res) => {
     });
 });
 
+app.get('/getFlora',(req,res)=>{
+    console.log("Solicitud para obtener todas la flora...")
+    const query="select * from flora";
+    connection.query(query,(error, resultado)=>{
+        if(error){
+            console.log("Error al obtener la flora")
+            return res.status(500).json("Error interno del servidor")
+        }
+        console.log("Flora obtenidas!")
+        res.status(200).json(resultado);
+    });
+});
+
+app.get('/getFauna',(req,res)=>{
+    console.log("Solicitud para obtener todas la fauna...")
+    const query="select * from fauna";
+    connection.query(query,(error, resultado)=>{
+        if(error){
+            console.log("Error al obtener la fauna")
+            return res.status(500).json("Error interno del servidor")
+        }
+        console.log("Fauna obtenidas!")
+        res.status(200).json(resultado);
+    });
+});
+
+
 app.get('/getNoticias',(req,res)=>{
     console.log("Solicitud para obtener todas las noticias...")
     const query="select * from noticias";
@@ -123,7 +150,7 @@ app.get('/regiones', (req, res) => {
 app.get('/buscar-cosa', (req,res)=>{
     const {name, table} = req.query;
 
-    const allowedTables = ['parque', 'flora', 'fauna','noticias','usuarios','regiones']
+    const allowedTables = ['parque','flora','fauna','noticias','usuarios','regiones']
     if (!allowedTables.includes(table)) {
         return res.status(400).json({ message: "Tabla no válida." });
     }
