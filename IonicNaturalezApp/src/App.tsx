@@ -12,7 +12,7 @@ import InicioSesion from './pages/InicioSesion';
 import RegistroUsuario from './pages/RegistroUsuario';
 import Parques from './pages/Parques';
 import Noticias from './pages/Noticias';
-import Parque_Natural_Gomez_Carreño from './pages/Parque_Natural_Gomez_Carreño';
+import Parque from './pages/Parque';
 import Quienes_Somos from './pages/Quienes_Somos';
 import Noticia from './pages/Noticia';
 import Floras from './pages/Floras';
@@ -81,7 +81,7 @@ const App: React.FC = () => (
           <Noticia />
         </Route>
         <Route exact path="/Parques/:parkName">
-          <Parque_Natural_Gomez_Carreño />
+          <Parque />
         </Route>
         <Route exact path="/Quienes_Somos">
           <Quienes_Somos/>

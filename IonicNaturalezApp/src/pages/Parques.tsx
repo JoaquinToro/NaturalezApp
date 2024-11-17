@@ -46,13 +46,15 @@ const Parques : React.FC= () => {
                 <div className='secciones-wrapper'>
                     {
                         parques.length > 0 ? parques.map( (c: CardInterface, index:number) => (
-                            <div className="seccion col-xs-1" key={index}>
+                          <a href={`/Parques/${c.title}`} key={index}>
+                            <div className="seccion col-xs-1">
                                 <IonRow>
                                     <IonCol>
                                         <CardDatos c={c} />
                                     </IonCol>
                                 </IonRow>
                             </div>
+                          </a>
                         )) : <></>
                     }
                 </div>
