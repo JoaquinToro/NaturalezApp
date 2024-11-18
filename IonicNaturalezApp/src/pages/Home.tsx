@@ -71,10 +71,48 @@ const Home: React.FC = () => {
     }
     return;
   }
+  const GetFlora=async()=>{
+    try{
+      const response = await axios.get('http://localhost:3001/getFlora');
+      const randIndex = Math.floor(Math.random() * response.data.length);
+      
+      const temp = {
+        id: response.data[randIndex].id_flora,
+        image:response.data[randIndex].images ? response.data[randIndex].images : "assets/placeholder/placeholder-image.jpg",
+        title:response.data[randIndex].name,
+        description:response.data[randIndex].description
+      };
+      setFloraDestacada(temp);
+
+    }catch{
+      console.log("Error");
+    }
+    return;
+  }
+  const GetFauna=async()=>{
+    try{
+      const response = await axios.get('http://localhost:3001/getFauna');
+      const randIndex = Math.floor(Math.random() * response.data.length);
+      
+      const temp = {
+        id: response.data[randIndex].id_fauna,
+        image:response.data[randIndex].images ? response.data[randIndex].images : "assets/placeholder/placeholder-image.jpg",
+        title:response.data[randIndex].name,
+        description:response.data[randIndex].description
+      };
+      setFaunaDestacada(temp);
+
+    }catch{
+      console.log("Error");
+    }
+    return;
+  }
 
     useEffect(()=>{
       GetParque();
       GetNoticia();
+      GetFlora();
+      GetFauna();
     }, [])
 
   return (
