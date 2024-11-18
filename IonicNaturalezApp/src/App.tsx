@@ -16,7 +16,9 @@ import Parque from './pages/Parque';
 import Quienes_Somos from './pages/Quienes_Somos';
 import Noticia from './pages/Noticia';
 import Floras from './pages/Floras';
+import Flora from './pages/Flora';
 import Faunas from './pages/Faunas';
+import Fauna from './pages/Fauna';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,7 +48,7 @@ const App: React.FC = () => (
   <IonApp>
 
     <IonReactRouter>
-      <IonRouterOutlet placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+      <IonRouterOutlet>
         <Route path="/InicioSesion">
           <InicioSesion />
         </Route>
@@ -71,8 +73,14 @@ const App: React.FC = () => (
         <Route exact path="/Flora">
           <Floras />
         </Route>
+        <Route exact path="/Flora/:name">
+          <Flora />
+        </Route>
         <Route exact path="/Fauna">
           <Faunas />
+        </Route>
+        <Route exact path="/Fauna/:name">
+          <Fauna />
         </Route>
         <Route exact path="/Noticias">
           <Noticias />

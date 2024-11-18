@@ -46,13 +46,15 @@ const Floras : React.FC= () => {
                 <div className='secciones-wrapper'>
                     {
                         floras.length > 0 ? floras.map( (c: CardInterface, index:number) => (
-                            <div className="seccion col-xs-1" key={index}>
-                                <IonRow>
-                                    <IonCol>
-                                        <CardDatos c={c} />
-                                    </IonCol>
-                                </IonRow>
-                            </div>
+                            <a href={`/Flora/${c.title}`} key={index}>
+                              <div className="seccion col-xs-1">
+                                  <IonRow>
+                                      <IonCol>
+                                          <CardDatos c={c} />
+                                      </IonCol>
+                                  </IonRow>
+                              </div>
+                            </a>
                         )) : <>Nada que mostrar :c</>
                     }
                 </div>

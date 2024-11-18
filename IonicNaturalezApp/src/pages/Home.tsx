@@ -148,7 +148,7 @@ const Home: React.FC = () => {
           <div className="seccion col-xs-1">
             <div className="ver-mas">
                 <h2 className="subtitulo">Flora destacada</h2>
-                <a href="#Flora">
+                <a href={`/Flora/${floraDestacada.title}`}>
                     <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Flora"/>
                 </a>
             </div>
@@ -157,7 +157,7 @@ const Home: React.FC = () => {
           <div className="seccion col-xs-1">
               <div className="ver-mas">
                   <h2 className="subtitulo">Fauna destacada</h2>
-                  <a href="#Fauna">
+                  <a href={`/Fauna/${faunaDestacada.title}`}>
                       <img className="arrow" src="assets/icon/arrow_forward_ios.svg" alt="Ícono de flecha con un link a NaturalezApp.cl/Fauna"/>
                   </a>
               </div>

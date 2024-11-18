@@ -46,13 +46,15 @@ const faunas : React.FC= () => {
                 <div className='secciones-wrapper'>
                     {
                         faunas.length > 0 ? faunas.map( (c: CardInterface, index:number) => (
-                            <div className="seccion col-xs-1" key={index}>
+                          <a href={`/Fauna/${c.title}`} key={index}>
+                            <div className="seccion col-xs-1" >
                                 <IonRow>
                                     <IonCol>
                                         <CardDatos c={c} />
                                     </IonCol>
                                 </IonRow>
                             </div>
+                          </a>
                         )) : <>Nada que mostrar :c</>
                     }
                 </div>
