@@ -30,6 +30,7 @@ const insertUser = async (data: any, reset: () => void) => {
             console.log('Usuario registrado:', result);
             alert('Usuario registrado con éxito');
             reset();
+            window.location.href = '/InicioSesion';
         } else {
             const errorResponse = await response.json();
             console.error('Error al registrar el usuario:', errorResponse);

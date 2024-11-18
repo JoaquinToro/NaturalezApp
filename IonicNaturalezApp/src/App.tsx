@@ -4,6 +4,9 @@ import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
+// Importa las rutas protegidas
+import { RutaAutenticada, RutaNoAutorizada } from './components/rutaProtegida';
+
 //Import pages
 import Home from './pages/Home';
 import Buscar from './pages/Buscar';
@@ -45,54 +48,111 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => (
-  <IonApp>
+  // <IonApp>
 
+  //   <IonReactRouter>
+  //     <IonRouterOutlet>
+  //       <Route path="/InicioSesion">
+  //         <InicioSesion />
+  //       </Route>
+  //       <Route exact path="/">
+  //         <Redirect to="/Home" />
+  //       </Route>
+  //       <Route exact path="/RegistroUsuario">
+  //         <RegistroUsuario/>
+  //       </Route>
+  //       <Route exact path="/Home">
+  //         <Home />
+  //       </Route>
+  //       <Route exact path="/Buscar">
+  //         <Buscar />
+  //       </Route>
+  //       <Route exact path="/Recomendar_Parque">
+  //         <Recomendar_Parque />
+  //       </Route>
+  //       <Route exact path="/Parques">
+  //         <Parques />
+  //       </Route>
+  //       <Route exact path="/Flora">
+  //         <Floras />
+  //       </Route>
+  //       <Route exact path="/Flora/:name">
+  //         <Flora />
+  //       </Route>
+  //       <Route exact path="/Fauna">
+  //         <Faunas />
+  //       </Route>
+  //       <Route exact path="/Fauna/:name">
+  //         <Fauna />
+  //       </Route>
+  //       <Route exact path="/Noticias">
+  //         <Noticias />
+  //       </Route>
+  //       <Route exact path="/Noticias/:id">
+  //         <Noticia />
+  //       </Route>
+  //       <Route exact path="/Parques/:parkName">
+  //         <Parque />
+  //       </Route>
+  //       <Route exact path="/Quienes_Somos">
+  //         <Quienes_Somos/>
+  //       </Route>
+  //     </IonRouterOutlet>
+  //   </IonReactRouter>
+  // </IonApp>
+
+  <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/InicioSesion">
+        {/* Rutas exclusivas para usuarios no autenticados */}
+        <RutaNoAutorizada exact path="/InicioSesion">
           <InicioSesion />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/Home" />
-        </Route>
-        <Route exact path="/RegistroUsuario">
-          <RegistroUsuario/>
-        </Route>
-        <Route exact path="/Home">
+        </RutaNoAutorizada>
+        <RutaNoAutorizada exact path="/RegistroUsuario">
+          <RegistroUsuario />
+        </RutaNoAutorizada>
+
+        {/* Ruta protegida para usuarios autenticados */}
+        <RutaAutenticada exact path="/Home">
           <Home />
-        </Route>
-        <Route exact path="/Buscar">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Buscar">
           <Buscar />
-        </Route>
-        <Route exact path="/Recomendar_Parque">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Recomendar_Parque">
           <Recomendar_Parque />
-        </Route>
-        <Route exact path="/Parques">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Parques">
           <Parques />
-        </Route>
-        <Route exact path="/Flora">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Flora">
           <Floras />
-        </Route>
-        <Route exact path="/Flora/:name">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Flora/:name">
           <Flora />
-        </Route>
-        <Route exact path="/Fauna">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Fauna">
           <Faunas />
-        </Route>
-        <Route exact path="/Fauna/:name">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Fauna/:name">
           <Fauna />
-        </Route>
-        <Route exact path="/Noticias">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Noticias">
           <Noticias />
-        </Route>
-        <Route exact path="/Noticias/:id">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Noticias/:id">
           <Noticia />
-        </Route>
-        <Route exact path="/Parques/:parkName">
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Parques/:parkName">
           <Parque />
-        </Route>
-        <Route exact path="/Quienes_Somos">
-          <Quienes_Somos/>
+        </RutaAutenticada>
+        <RutaAutenticada exact path="/Quienes_Somos">
+          <Quienes_Somos />
+        </RutaAutenticada>
+
+        {/* Redirección por defecto */}
+        <Route exact path="/">
+          <Redirect to="/InicioSesion" />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

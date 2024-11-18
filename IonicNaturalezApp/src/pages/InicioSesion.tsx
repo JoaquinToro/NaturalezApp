@@ -1,18 +1,48 @@
+// inicioSesion.jsx
 import {  IonContent, IonPage, } from '@ionic/react';
 import './InicioSesion.css';
 
 // Validaciones
-import { useForm } from 'react-hook-form'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
-const ingresar = () => {
-    console.log("Hola")
+// Define el tipo de datos del formulario
+interface FormValues {
+    email: string;
+    password: string;
+}
+
+const ingresar: SubmitHandler<FormValues> = async (data) => {
+    console.log("Datos enviados: ",data);
+
+    try{
+        const response = await fetch("http://localhost:3001/inicioSesion", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok){
+            const result = await response.json();
+            console.log("Inicio de sesion exitosa", result);
+
+            // Guardar el token y el nombre de usuario
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('username', result.username);  // Guardar nombre de usuario
+            window.location.href = '/home';  // Redirigir al home o a la ruta protegida
+        }
+        else{
+            console.error("Error al iniciar sesión:", response.statusText);
+        }
+    }catch (error) {
+        console.error("Error de red:", error);
+    }
 }
 
 const InicioSesion: React.FC = () => {
 
-    const { watch, handleSubmit, register, formState: { errors } } = useForm();
-
-    const password = watch("password");
+    const { handleSubmit, register, formState: { errors } } = useForm<FormValues>();
 
     return (
         <IonPage>
@@ -116,7 +146,7 @@ const InicioSesion: React.FC = () => {
                                             <small><a href="#">¿Olvidaste tu contraseña?</a></small>
                                         </div>
                                     </div>
-                                    <button className="btn btn-lg w-100 pt-3" id="btnIniciarSesion">Iniciar Sesión</button>
+                                    <button className="btn btn-lg w-100 pt-3" id="btnIniciarSesion" type='submit'>Iniciar Sesión</button>
                                 </form>
                                 <div className="text-center">
                                     <small style={{ color: 'black', marginRight: '15px' }}>¿No tienes cuenta? | <a href="/RegistroUsuario" className="fw-bold">Registrate</a></small>
