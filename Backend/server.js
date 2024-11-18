@@ -90,6 +90,24 @@ app.get('/getFlora',(req,res)=>{
     });
 });
 
+app.get('/getFlora/:name', (req, res) => {
+    const name = req.params.name;
+    console.log(`Solicitud para obtener la flora ${name}...`);
+    const query = "select * from flora as fl where fl.name = ?";
+    connection.query(query, [name], (error, resultado) => {
+        if (error) {
+            console.error("Error al obtener la flora: ", error);
+            return res.status(500).json({ message: "Error interno del servidor" });
+        }
+        if (resultado.length === 0) {
+            console.log("No se encontró ninguna flora con ese nombre.");
+            return res.status(404).json({ message: "Flora no existe" });
+        }
+        console.log(`Flora ${name} encontrada!`);
+        res.status(200).json(resultado);
+    });
+});
+
 app.get('/getFauna',(req,res)=>{
     console.log("Solicitud para obtener todas la fauna...")
     const query="select * from fauna";
@@ -103,6 +121,23 @@ app.get('/getFauna',(req,res)=>{
     });
 });
 
+app.get('/getFauna/:name', (req, res) => {
+    const name = req.params.name;
+    console.log(`Solicitud para obtener la fauna ${name}...`);
+    const query = "select * from fauna as fa where fa.name = ?";
+    connection.query(query, [name], (error, resultado) => {
+        if (error) {
+            console.error("Error al obtener la fauna: ", error);
+            return res.status(500).json({ message: "Error interno del servidor" });
+        }
+        if (resultado.length === 0) {
+            console.log("No se encontró ninguna fauna con ese nombre.");
+            return res.status(404).json({ message: "Fauna no existe" });
+        }
+        console.log(`Fauna ${name} encontrada!`);
+        res.status(200).json(resultado);
+    });
+});
 
 app.get('/getNoticias',(req,res)=>{
     console.log("Solicitud para obtener todas las noticias...")
