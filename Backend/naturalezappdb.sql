@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 17, 2024 at 12:12 AM
+-- Generation Time: Nov 19, 2024 at 01:21 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,6 +34,15 @@ CREATE TABLE `comentario` (
   `id_usuario` int(11) NOT NULL,
   `id_parque` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `comentario`
+--
+
+INSERT INTO `comentario` (`id_comentario`, `body`, `date`, `id_usuario`, `id_parque`) VALUES
+(1, 'hola soy yo', '2024-11-18', 1, 4),
+(2, 'comentario de vina', '2024-11-18', 1, 3),
+(3, 'Wow esta area tenia muchos lugares bonitos', '2024-11-18', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -311,6 +320,14 @@ CREATE TABLE `usuario` (
   `id_region` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `username`, `password`, `email`, `rol`, `activo`, `id_region`) VALUES
+(1, 'admin', 'Admin123123!', 'admin@gmail.com', 'admin', 1, 5),
+(2, 'agustin', '$2b$10$UGPWfR6J.rqexZMLjCZp5uFN/gzmo6eCOZMVg8JDnpXUSnpwNdEoe', 'agustin@gmail.com', 'usuario', 0, 14);
+
 -- --------------------------------------------------------
 
 --
@@ -443,7 +460,7 @@ ALTER TABLE `usuario_parque`
 -- AUTO_INCREMENT for table `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `fauna`
@@ -503,7 +520,7 @@ ALTER TABLE `tipoflora`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
