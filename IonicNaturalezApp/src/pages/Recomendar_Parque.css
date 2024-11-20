@@ -34,6 +34,12 @@
     display: flex;
   }
   
+  .cbutton{
+    text-align: center !important;
+    align-self: center;
+    margin: 30px;
+  }
+
   .busqueda{
     max-width: 50rem;
     max-height: 20rem;

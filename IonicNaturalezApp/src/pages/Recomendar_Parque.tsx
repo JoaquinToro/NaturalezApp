@@ -9,12 +9,20 @@ import HeaderN from "../components/HeaderN";
 import { CardInterface } from "../utils/CardInterface";
 import { ResultInterface } from "../utils/ResultInterface";
 import Resultado from "../components/Resultado";
+import CardDatos from "../components/CardDatos";
 
 
 const Recomendar_Parque: React.FC = () =>{
+    const placeholder = {
+        id:0,
+        image:"assets/placeholder/placeholder-image.jpg",
+        title:"Lorem Ipsum",
+        description:"Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. " +
+                    "Ligula eu vestibulum rutrum arcu erat id platea, ultrices fames blandit quisque quis laoreet suspendisse cursus, dapibus lectus aliquet ac nisl nun."
+      };
 
     const [busqueda,setBusqueda] = useState('');
-    const [parqueRecomendado,setParqueRecomendado] = useState('')
+    const [parqueRecomendado, setParqueRecomendado] = useState<CardInterface>(placeholder);
     const [filtros,setFiltros] = useState([])
     const [filtroActual,setFiltroActual] = useState('')
     const [resultados,setResultados]=useState([])
@@ -37,13 +45,32 @@ const Recomendar_Parque: React.FC = () =>{
         return;
     }
 
+    const buscarParque = async () =>{
+        try{
+            const response = await axios.get('http://localhost:3001/getParques');
+            const randIndex = Math.floor(Math.random() * response.data.length);
+            
+            const temp = {
+              id: response.data[randIndex].id,
+              image:response.data[randIndex].images ? response.data[randIndex].images.split(',')[0] : "assets/placeholder/placeholder-image.jpg",
+              title:response.data[randIndex].name,
+              description:response.data[randIndex].description,
+            };
+      
+            setParqueRecomendado(temp);
+          }catch{
+            console.log("Error");
+          }
+          return;
+    }
+
     return(
         <IonPage>
             <HeaderN/>
             <IonContent id="main">
-                <div className="menu-botones">
+            {/* <div className="menu-botones">
                     <h2>Elija la categoría que desea Buscar</h2>
-                <div className="row align-items-center">
+                <div className="row align-items-center"> 
                     <div className="col-6 mb-2 tabla">
                         <button title="Seleccionar flora" type="button" className="btn btn-primary" onClick={()=>{setFiltroActual('flora')}}>Flora</button>
                     </div>
@@ -65,18 +92,25 @@ const Recomendar_Parque: React.FC = () =>{
                         <input className="form-control me-2" type="search" placeholder="Ingrese su búsqueda..." aria-label="Search"/>
                          <button className="btn btn-outline-success" type="button" onClick={()=>realizarBusqueda(busqueda)}>Buscar</button>
                     </form>
+                    <button className="btn btn-outline-success cbtutton" type="button" onClick={()=>realizarBusqueda(busqueda)}>Buscar</button>
                 </div>
+            ¨*/}
+                <div className="container-fluid">
+                    <h2>Presione RECOMENDAR para obtener su parque recomendado</h2>
+                        <button title="Recomendar parque" type="button" className="btn btn-primary" onClick={buscarParque}>RECOMENDAR</button>
+                    </div>
+                
                 <div className="container px-4 py-4 bg-white caja-resultados">
                     {
-                        resultados.length > 0 ? resultados.map((r : ResultInterface, index:number)=>{
-                            <IonRow key={r.id || index}>
-                                <IonCol>
-                                    <Resultado r={r} />
-                                </IonCol>
-                            </IonRow>
-                        })
-                        :<></>
+                        parqueRecomendado.title != "Lorem Ipsum" ?  
+                        <div className="container px-4 py-4 bg-white caja-resultados">
+                            <a href={`/Parques/${parqueRecomendado.title}`}>
+                                <CardDatos c={parqueRecomendado}/>
+                            </a>
+                            
+                        </div> : <></>
                     }
+                    
                 </div>
                 <FooterN/>
             </IonContent>
