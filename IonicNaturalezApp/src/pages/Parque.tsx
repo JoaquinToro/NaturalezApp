@@ -7,7 +7,8 @@ import {
   IonButton,
   IonList,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonToast
 } from '@ionic/react';
 import { useParams } from 'react-router';
 import axios from 'axios';
@@ -39,8 +40,18 @@ const Parque: React.FC = () => {
   const [parkData, setParkData] = useState<ParkData | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState('');
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
+    // Obtener el 'username' desde el localStorage cuando el componente se monte
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername); // Guardar el username en el estado
+    }
+
+    // Fetch park data
     axios.get(`http://localhost:3001/getParque/${parkName}`)
       .then(response => {
         const temp = {
@@ -62,7 +73,11 @@ const Parque: React.FC = () => {
         setParkData(temp);
         fetchComments(temp.id_parque);
       })
-      .catch(error => console.error('Error fetching park data:', error));
+      .catch(error => {
+        console.error('Error fetching park data:', error);
+        setToastMessage('Error al cargar los datos del parque');
+        setShowToast(true);
+      });
   }, [parkName]);
 
   const fetchComments = async (id_parque: number) => {
@@ -71,27 +86,38 @@ const Parque: React.FC = () => {
       setComments(response.data);
     } catch (error) {
       console.error('Error fetching comments:', error);
+      setToastMessage('Error al cargar los comentarios');
+      setShowToast(true);
     }
   };
 
   const handleAddComment = async () => {
     if (!newComment.trim() || !parkData) return;
-
+  
     try {
-      await axios.post('http://localhost:3001/addComentario', {
+      // Simple POST request without authentication headers
+      const response = await axios.post('http://localhost:3001/addComentario', {
         body: newComment,
-        id_usuario: 1, // hardcodeado por ahora hasta que haya verificacion
-        id_parque: parkData.id_parque
+        id_parque: parkData.id_parque,
+        username: localStorage.getItem('username')
       });
-      setNewComment('');
-      fetchComments(parkData.id_parque);
+  
+      if (response.data) {
+        setNewComment('');
+        setComments(prevComments => [{
+          id_comentario: response.data.id,
+          body: newComment,
+          date: new Date().toISOString(),
+          username: localStorage.getItem('username') || ''
+        }, ...prevComments]);
+      }
     } catch (error) {
       console.error('Error adding comment:', error);
     }
   };
 
   if (!parkData) {
-    return <IonPage><IonContent>No esta el parque</IonContent></IonPage>;
+    return <IonPage><IonContent>Cargando...</IonContent></IonPage>;
   }
 
   return (
@@ -154,14 +180,25 @@ const Parque: React.FC = () => {
           ))}
         </IonList>
 
-        <div className="comment-form">
-          <IonInput
-            value={newComment}
-            placeholder="Escribe tu comentario"
-            onIonChange={e => setNewComment(e.detail.value!)}
-          ></IonInput>
-          <IonButton onClick={handleAddComment}>Agregar Comentario</IonButton>
-        </div>
+        {username && (
+          <div className="comment-form">
+            <IonInput
+              value={newComment}
+              placeholder="Escribe tu comentario"
+              onIonChange={e => setNewComment(e.detail.value!)}
+            ></IonInput>
+            <IonButton onClick={handleAddComment}>
+              Agregar Comentario
+            </IonButton>
+          </div>
+        )}
+
+        <IonToast
+          isOpen={showToast}
+          onDidDismiss={() => setShowToast(false)}
+          message={toastMessage}
+          duration={3000}
+        />
 
         <FooterN/>
       </IonContent>
