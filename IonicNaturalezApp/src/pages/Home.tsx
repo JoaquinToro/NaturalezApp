@@ -123,7 +123,7 @@ const Home: React.FC = () => {
             <Swiper className='carrusel'>
               <SwiperSlide><img id="imagen-carrusel" src="assets/images/Jardin_Botanico_Vina_Del_Mar.jpg" alt="Imagen del Jardín Botánico de Viña del Mar"/></SwiperSlide>
               <SwiperSlide><img src="assets/images/pudu.jpg" alt="First slide"/></SwiperSlide>
-              <SwiperSlide><img src="assets/images/Chagual Azul.jpg" alt="Imagen del Jardín Botánico de Viña del Mar"/></SwiperSlide>
+              <SwiperSlide><img src="assets/images/Opuntia.jpg" alt="Imagen del Jardín Botánico de Viña del Mar"/></SwiperSlide>
             </Swiper>
         </div>
         <div className="secciones-wrapper">

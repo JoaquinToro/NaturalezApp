@@ -152,6 +152,8 @@ app.get('/getNoticias',(req,res)=>{
         res.status(200).json(resultado);
     });
 });
+
+//Comentarios
 app.get('/getComentarios/:id_parque', (req, res) => {
     const id_parque = req.params.id_parque;
     console.log(`Solicitud para obtener comentarios del parque ${id_parque}...`);
@@ -173,7 +175,6 @@ app.get('/getComentarios/:id_parque', (req, res) => {
         res.status(200).json(resultado);
     });
 });
-
 
 app.post("/addComentario", (req, res) => {
     const { body, id_parque, username } = req.body;
@@ -204,6 +205,7 @@ app.post("/addComentario", (req, res) => {
       });
     });
   });
+
 app.get('/getNoticias/:id', (req, res) => {
     const id = req.params.id;
     console.log(`Solicitud para obtener la noticia con id ${id}...`);
@@ -358,6 +360,53 @@ app.get('/usuarioNom/:id', (req, res) => {
         res.json(results[0]); // Devuelve el primer resultado como un objeto JSON
         console.log("Envio de usuario:", results[0]);
     });
+});
+
+app.post("/inicioSesion", async (req,res)=>{
+    const { email, password } = req.body;
+
+    // Validar que los datos existen
+    if (!email || !password){
+        return res.status(400).json({ error: 'El correo y la contraseña son obligatorios.' });
+    }
+
+    try{
+        connection.query("SELECT * FROM usuario WHERE email = ?", [email], async(error, results) => {
+            if (error){
+                console.error("Error al consultar la base de datos:", error);
+                return res.status(500).json({ message: "Error interno del servidor" });
+            }
+
+            // Verifica si se encontró un usuario
+            if (results.length === 0){
+                return res.status(404).json({ message: "Usuario no encontrado" });
+            }
+
+            const user = results [0];
+
+            // Compara la contraseña ingresada con la encriptada en la base de datos
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+
+            if (!isPasswordValid) {
+                return res.status(401).json({ message: "Contraseña incorrecta" });
+            }
+
+            // Opcional: Genera un token JWT si todo es válido
+            const token = jwt.sign({ id: user.id, email: user.email, username: user.username }, JWT_SECRET, {
+                expiresIn: "1h", // Duración del token
+            });
+
+            // Responde con éxito
+            res.status(200).json({
+                message: "Inicio de sesión exitoso",
+                token, // Enviar token si es necesario
+                username: user.username,
+            });
+        });
+    } catch (error) {
+        console.error("Error al procesar la solicitud:", error);
+        res.status(500).json({ message: "Error interno del servidor" });
+    }
 });
 
 });
