@@ -174,25 +174,36 @@ app.get('/getComentarios/:id_parque', (req, res) => {
     });
 });
 
-// New POST method to add a comment
-app.post('/addComentario', (req, res) => {
-    const { body, id_usuario, id_parque } = req.body;
-    console.log(`Solicitud para agregar un comentario al parque ${id_parque}...`);
-    
+
+app.post("/addComentario", (req, res) => {
+    const { body, id_parque, username } = req.body;
+  
+
+    if (!body || !id_parque || !username) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+  
+
     const query = `
-        INSERT INTO comentario (body, date, id_usuario, id_parque)
-        VALUES (?, NOW(), ?, ?)
+      INSERT INTO comentario (body, date, id_usuario, id_parque)
+      SELECT ?, NOW(), id_usuario, ?
+      FROM usuario
+      WHERE username = ?
+      LIMIT 1
     `;
-    
-    connection.query(query, [body, id_usuario, id_parque], (error, resultado) => {
-        if (error) {
-            console.error("Error al agregar el comentario:", error);
-            return res.status(500).json({ message: "Error al agregar el comentario." });
-        }
-        console.log(`Comentario agregado al parque ${id_parque}!`);
-        res.status(201).json({ message: "Comentario agregado exitosamente.", id: resultado.insertId });
+  
+    connection.query(query, [body, id_parque, username], (error, result) => {
+      if (error) {
+        console.error("Error adding comment:", error);
+        return res.status(500).json({ error: "Error adding comment" });
+      }
+  
+      res.status(201).json({
+        message: "Comment added successfully",
+        id: result.insertId
+      });
     });
-});
+  });
 app.get('/getNoticias/:id', (req, res) => {
     const id = req.params.id;
     console.log(`Solicitud para obtener la noticia con id ${id}...`);
