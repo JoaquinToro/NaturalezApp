@@ -53,7 +53,7 @@ const Noticia: React.FC = () => {
             <IonCardTitle>{noticia.title}</IonCardTitle>
             <IonCardSubtitle>{noticia.subtitle}</IonCardSubtitle>
             <IonText>
-              <p style={{color:"black"}}>{noticia.author} - {noticia.fecha}</p>
+              <p style={{color:"black"}}>Autor: {noticia.author} - Fecha: {noticia.fecha.split('T')[0]}</p>
             </IonText>
           </IonCardHeader>
           <IonCardContent>

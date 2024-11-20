@@ -11,6 +11,7 @@ import './Home.css';
 
 const Noticias : React.FC= () => {
     const placeholder = {
+        id:0,
         image:"assets/placeholder/placeholder-image.jpg",
         title:"Lorem Ipsum",
         description:"Lorem ipsum dolor sit amet consectetur adipiscing elit posuere, non mauris gravida tellus sapien vehicula. " +
@@ -21,7 +22,8 @@ const Noticias : React.FC= () => {
     const Getnoticias=async()=>{
         try{
           const response = await axios.get('http://localhost:3001/getNoticias');
-          const temp = response.data.map((item: { images: any; title: any; body: any; }) => ({
+          const temp = response.data.map((item: { id_noticia:any; images: any; title: any; body: any; }) => ({
+            id: item.id_noticia,
             image: item.images ? item.images : "assets/placeholder/placeholder-image.jpg",
             title: item.title,
             description: item.body,
@@ -46,13 +48,15 @@ const Noticias : React.FC= () => {
                 <div className='secciones-wrapper'>
                     {
                         noticias.length > 0 ? noticias.map( (c: CardInterface, index:number) => (
-                            <div className="seccion col-xs-1" key={index}>
+                          <a href={`Noticias/${noticias[index].id}`} key={index}>
+                            <div className="seccion col-xs-1">
                                 <IonRow>
                                     <IonCol>
                                         <CardDatos c={c} />
                                     </IonCol>
                                 </IonRow>
                             </div>
+                          </a>
                         )) : <></>
                     }
                 </div>
