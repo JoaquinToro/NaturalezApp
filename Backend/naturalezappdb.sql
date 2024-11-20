@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 19, 2024 at 01:21 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 20-11-2024 a las 03:28:42
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,31 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `naturalezappdb`
+-- Base de datos: `naturalezappdb`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registrar_usuario` (IN `p_nombre_usuario` VARCHAR(255), IN `p_email_usuario` VARCHAR(255))   BEGIN
+    -- Insertar el usuario en la tabla
+    INSERT INTO usuario (nombre_usuario, email_usuario)
+    VALUES (p_nombre_usuario, p_email_usuario);
+    
+    -- Asignar el rol 'usuario' al usuario recién insertado
+    SET @sql = CONCAT('GRANT usuario TO ', QUOTE(p_nombre_usuario));
+    PREPARE stmt FROM @sql;
+    EXECUTE stmt;
+    DEALLOCATE PREPARE stmt;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comentario`
+-- Estructura de tabla para la tabla `comentario`
 --
 
 CREATE TABLE `comentario` (
@@ -36,18 +54,20 @@ CREATE TABLE `comentario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `comentario`
+-- Volcado de datos para la tabla `comentario`
 --
 
 INSERT INTO `comentario` (`id_comentario`, `body`, `date`, `id_usuario`, `id_parque`) VALUES
 (1, 'hola soy yo', '2024-11-18', 1, 4),
 (2, 'comentario de vina', '2024-11-18', 1, 3),
-(3, 'Wow esta area tenia muchos lugares bonitos', '2024-11-18', 1, 3);
+(3, 'Wow esta area tenia muchos lugares bonitos', '2024-11-18', 1, 3),
+(4, 'Hola, estoy escribiendo un comentario', '2024-11-19', 1, 3),
+(5, 'Prueba', '2024-11-19', 3, 4);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fauna`
+-- Estructura de tabla para la tabla `fauna`
 --
 
 CREATE TABLE `fauna` (
@@ -60,7 +80,7 @@ CREATE TABLE `fauna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `fauna`
+-- Volcado de datos para la tabla `fauna`
 --
 
 INSERT INTO `fauna` (`id_fauna`, `name`, `images`, `description`, `habitat`, `id_tipoFauna`) VALUES
@@ -74,7 +94,7 @@ INSERT INTO `fauna` (`id_fauna`, `name`, `images`, `description`, `habitat`, `id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `flora`
+-- Estructura de tabla para la tabla `flora`
 --
 
 CREATE TABLE `flora` (
@@ -87,7 +107,7 @@ CREATE TABLE `flora` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `flora`
+-- Volcado de datos para la tabla `flora`
 --
 
 INSERT INTO `flora` (`id_flora`, `name`, `images`, `description`, `id_tipoFlora`, `id_temporada`) VALUES
@@ -101,7 +121,7 @@ INSERT INTO `flora` (`id_flora`, `name`, `images`, `description`, `id_tipoFlora`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `noticias`
+-- Estructura de tabla para la tabla `noticias`
 --
 
 CREATE TABLE `noticias` (
@@ -116,7 +136,7 @@ CREATE TABLE `noticias` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `noticias`
+-- Volcado de datos para la tabla `noticias`
 --
 
 INSERT INTO `noticias` (`id_noticia`, `title`, `subtitle`, `body`, `author`, `images`, `fecha`, `id_parque`) VALUES
@@ -125,7 +145,7 @@ INSERT INTO `noticias` (`id_noticia`, `title`, `subtitle`, `body`, `author`, `im
 -- --------------------------------------------------------
 
 --
--- Table structure for table `parque`
+-- Estructura de tabla para la tabla `parque`
 --
 
 CREATE TABLE `parque` (
@@ -138,7 +158,7 @@ CREATE TABLE `parque` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `parque`
+-- Volcado de datos para la tabla `parque`
 --
 
 INSERT INTO `parque` (`id_parque`, `name`, `description`, `images`, `location`, `id_region`) VALUES
@@ -148,7 +168,7 @@ INSERT INTO `parque` (`id_parque`, `name`, `description`, `images`, `location`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `parque_fauna`
+-- Estructura de tabla para la tabla `parque_fauna`
 --
 
 CREATE TABLE `parque_fauna` (
@@ -157,7 +177,7 @@ CREATE TABLE `parque_fauna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `parque_fauna`
+-- Volcado de datos para la tabla `parque_fauna`
 --
 
 INSERT INTO `parque_fauna` (`id_parque`, `id_fauna`) VALUES
@@ -171,7 +191,7 @@ INSERT INTO `parque_fauna` (`id_parque`, `id_fauna`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `parque_flora`
+-- Estructura de tabla para la tabla `parque_flora`
 --
 
 CREATE TABLE `parque_flora` (
@@ -180,7 +200,7 @@ CREATE TABLE `parque_flora` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `parque_flora`
+-- Volcado de datos para la tabla `parque_flora`
 --
 
 INSERT INTO `parque_flora` (`id_flora`, `id_parque`) VALUES
@@ -194,7 +214,7 @@ INSERT INTO `parque_flora` (`id_flora`, `id_parque`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `region`
+-- Estructura de tabla para la tabla `region`
 --
 
 CREATE TABLE `region` (
@@ -203,7 +223,7 @@ CREATE TABLE `region` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `region`
+-- Volcado de datos para la tabla `region`
 --
 
 INSERT INTO `region` (`id_region`, `name`) VALUES
@@ -227,7 +247,7 @@ INSERT INTO `region` (`id_region`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `temporada`
+-- Estructura de tabla para la tabla `temporada`
 --
 
 CREATE TABLE `temporada` (
@@ -236,7 +256,7 @@ CREATE TABLE `temporada` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `temporada`
+-- Volcado de datos para la tabla `temporada`
 --
 
 INSERT INTO `temporada` (`id_temporada`, `season`) VALUES
@@ -252,7 +272,7 @@ INSERT INTO `temporada` (`id_temporada`, `season`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tip`
+-- Estructura de tabla para la tabla `tip`
 --
 
 CREATE TABLE `tip` (
@@ -264,7 +284,7 @@ CREATE TABLE `tip` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipofauna`
+-- Estructura de tabla para la tabla `tipofauna`
 --
 
 CREATE TABLE `tipofauna` (
@@ -273,7 +293,7 @@ CREATE TABLE `tipofauna` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tipofauna`
+-- Volcado de datos para la tabla `tipofauna`
 --
 
 INSERT INTO `tipofauna` (`id_tipoFauna`, `species`) VALUES
@@ -287,7 +307,7 @@ INSERT INTO `tipofauna` (`id_tipoFauna`, `species`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tipoflora`
+-- Estructura de tabla para la tabla `tipoflora`
 --
 
 CREATE TABLE `tipoflora` (
@@ -296,7 +316,7 @@ CREATE TABLE `tipoflora` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tipoflora`
+-- Volcado de datos para la tabla `tipoflora`
 --
 
 INSERT INTO `tipoflora` (`id_tipoFlora`, `type`) VALUES
@@ -307,7 +327,7 @@ INSERT INTO `tipoflora` (`id_tipoFlora`, `type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estructura de tabla para la tabla `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -321,17 +341,19 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `usuario`
+-- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`id_usuario`, `username`, `password`, `email`, `rol`, `activo`, `id_region`) VALUES
 (1, 'admin', 'Admin123123!', 'admin@gmail.com', 'admin', 1, 5),
-(2, 'agustin', '$2b$10$UGPWfR6J.rqexZMLjCZp5uFN/gzmo6eCOZMVg8JDnpXUSnpwNdEoe', 'agustin@gmail.com', 'usuario', 0, 14);
+(2, 'agustin', '$2b$10$UGPWfR6J.rqexZMLjCZp5uFN/gzmo6eCOZMVg8JDnpXUSnpwNdEoe', 'agustin@gmail.com', 'usuario', 0, 14),
+(3, 'joaquin', '$2b$10$QUdY5v1fuFFEKHhSXjYhTu.iPxCwJ5EKw87w71LZxHmRot0e1icVS', 'joaquintoro53@gmail.com', 'usuario', 0, 5),
+(5, 'asa', '$2b$10$tQY0oYXDfHDlxaqE09hMI.wCHX.OOILuUQhji5dvFMujU33qt5U0K', 'josa@asa.com', 'usuario', 0, 6);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_parque`
+-- Estructura de tabla para la tabla `usuario_parque`
 --
 
 CREATE TABLE `usuario_parque` (
@@ -340,11 +362,11 @@ CREATE TABLE `usuario_parque` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `comentario`
+-- Indices de la tabla `comentario`
 --
 ALTER TABLE `comentario`
   ADD PRIMARY KEY (`id_comentario`),
@@ -353,7 +375,7 @@ ALTER TABLE `comentario`
   ADD KEY `id_parque` (`id_parque`);
 
 --
--- Indexes for table `fauna`
+-- Indices de la tabla `fauna`
 --
 ALTER TABLE `fauna`
   ADD PRIMARY KEY (`id_fauna`),
@@ -361,7 +383,7 @@ ALTER TABLE `fauna`
   ADD KEY `id_tipoFauna` (`id_tipoFauna`);
 
 --
--- Indexes for table `flora`
+-- Indices de la tabla `flora`
 --
 ALTER TABLE `flora`
   ADD PRIMARY KEY (`id_flora`),
@@ -370,7 +392,7 @@ ALTER TABLE `flora`
   ADD KEY `id_temporada` (`id_temporada`);
 
 --
--- Indexes for table `noticias`
+-- Indices de la tabla `noticias`
 --
 ALTER TABLE `noticias`
   ADD PRIMARY KEY (`id_noticia`),
@@ -378,7 +400,7 @@ ALTER TABLE `noticias`
   ADD KEY `id_parque` (`id_parque`);
 
 --
--- Indexes for table `parque`
+-- Indices de la tabla `parque`
 --
 ALTER TABLE `parque`
   ADD PRIMARY KEY (`id_parque`),
@@ -386,7 +408,7 @@ ALTER TABLE `parque`
   ADD KEY `id_region` (`id_region`);
 
 --
--- Indexes for table `parque_fauna`
+-- Indices de la tabla `parque_fauna`
 --
 ALTER TABLE `parque_fauna`
   ADD PRIMARY KEY (`id_parque`,`id_fauna`),
@@ -394,28 +416,28 @@ ALTER TABLE `parque_fauna`
   ADD KEY `id_fauna` (`id_fauna`);
 
 --
--- Indexes for table `parque_flora`
+-- Indices de la tabla `parque_flora`
 --
 ALTER TABLE `parque_flora`
   ADD PRIMARY KEY (`id_flora`,`id_parque`),
   ADD UNIQUE KEY `id_parque` (`id_parque`,`id_flora`);
 
 --
--- Indexes for table `region`
+-- Indices de la tabla `region`
 --
 ALTER TABLE `region`
   ADD PRIMARY KEY (`id_region`),
   ADD UNIQUE KEY `id_region` (`id_region`);
 
 --
--- Indexes for table `temporada`
+-- Indices de la tabla `temporada`
 --
 ALTER TABLE `temporada`
   ADD PRIMARY KEY (`id_temporada`),
   ADD UNIQUE KEY `id_temporada` (`id_temporada`);
 
 --
--- Indexes for table `tip`
+-- Indices de la tabla `tip`
 --
 ALTER TABLE `tip`
   ADD PRIMARY KEY (`id_tip`),
@@ -423,21 +445,21 @@ ALTER TABLE `tip`
   ADD KEY `id_parque` (`id_parque`);
 
 --
--- Indexes for table `tipofauna`
+-- Indices de la tabla `tipofauna`
 --
 ALTER TABLE `tipofauna`
   ADD PRIMARY KEY (`id_tipoFauna`),
   ADD UNIQUE KEY `id_tipoFauna` (`id_tipoFauna`);
 
 --
--- Indexes for table `tipoflora`
+-- Indices de la tabla `tipoflora`
 --
 ALTER TABLE `tipoflora`
   ADD PRIMARY KEY (`id_tipoFlora`),
   ADD UNIQUE KEY `id_tipoFlora` (`id_tipoFlora`);
 
 --
--- Indexes for table `usuario`
+-- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
@@ -446,146 +468,146 @@ ALTER TABLE `usuario`
   ADD KEY `id_region` (`id_region`);
 
 --
--- Indexes for table `usuario_parque`
+-- Indices de la tabla `usuario_parque`
 --
 ALTER TABLE `usuario_parque`
   ADD PRIMARY KEY (`id_usuario`,`id_parque`),
   ADD KEY `fk_parque` (`id_parque`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `comentario`
+-- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `fauna`
+-- AUTO_INCREMENT de la tabla `fauna`
 --
 ALTER TABLE `fauna`
   MODIFY `id_fauna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `flora`
+-- AUTO_INCREMENT de la tabla `flora`
 --
 ALTER TABLE `flora`
   MODIFY `id_flora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `noticias`
+-- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
   MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `parque`
+-- AUTO_INCREMENT de la tabla `parque`
 --
 ALTER TABLE `parque`
   MODIFY `id_parque` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `region`
+-- AUTO_INCREMENT de la tabla `region`
 --
 ALTER TABLE `region`
   MODIFY `id_region` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT for table `temporada`
+-- AUTO_INCREMENT de la tabla `temporada`
 --
 ALTER TABLE `temporada`
   MODIFY `id_temporada` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `tip`
+-- AUTO_INCREMENT de la tabla `tip`
 --
 ALTER TABLE `tip`
   MODIFY `id_tip` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tipofauna`
+-- AUTO_INCREMENT de la tabla `tipofauna`
 --
 ALTER TABLE `tipofauna`
   MODIFY `id_tipoFauna` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tipoflora`
+-- AUTO_INCREMENT de la tabla `tipoflora`
 --
 ALTER TABLE `tipoflora`
   MODIFY `id_tipoFlora` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `usuario`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `comentario`
+-- Filtros para la tabla `comentario`
 --
 ALTER TABLE `comentario`
   ADD CONSTRAINT `comentario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
   ADD CONSTRAINT `comentario_ibfk_2` FOREIGN KEY (`id_parque`) REFERENCES `parque` (`id_parque`);
 
 --
--- Constraints for table `fauna`
+-- Filtros para la tabla `fauna`
 --
 ALTER TABLE `fauna`
   ADD CONSTRAINT `fauna_ibfk_1` FOREIGN KEY (`id_tipoFauna`) REFERENCES `tipofauna` (`id_tipoFauna`);
 
 --
--- Constraints for table `flora`
+-- Filtros para la tabla `flora`
 --
 ALTER TABLE `flora`
   ADD CONSTRAINT `flora_ibfk_1` FOREIGN KEY (`id_tipoFlora`) REFERENCES `tipoflora` (`id_tipoFlora`),
   ADD CONSTRAINT `flora_ibfk_2` FOREIGN KEY (`id_temporada`) REFERENCES `temporada` (`id_temporada`);
 
 --
--- Constraints for table `noticias`
+-- Filtros para la tabla `noticias`
 --
 ALTER TABLE `noticias`
   ADD CONSTRAINT `noticias_ibfk_1` FOREIGN KEY (`id_parque`) REFERENCES `parque` (`id_parque`);
 
 --
--- Constraints for table `parque`
+-- Filtros para la tabla `parque`
 --
 ALTER TABLE `parque`
   ADD CONSTRAINT `parque_ibfk_1` FOREIGN KEY (`id_region`) REFERENCES `region` (`id_region`);
 
 --
--- Constraints for table `parque_fauna`
+-- Filtros para la tabla `parque_fauna`
 --
 ALTER TABLE `parque_fauna`
   ADD CONSTRAINT `parque_fauna_ibfk_1` FOREIGN KEY (`id_parque`) REFERENCES `parque` (`id_parque`),
   ADD CONSTRAINT `parque_fauna_ibfk_2` FOREIGN KEY (`id_fauna`) REFERENCES `fauna` (`id_fauna`);
 
 --
--- Constraints for table `parque_flora`
+-- Filtros para la tabla `parque_flora`
 --
 ALTER TABLE `parque_flora`
   ADD CONSTRAINT `parque_flora_ibfk_1` FOREIGN KEY (`id_parque`) REFERENCES `parque` (`id_parque`),
   ADD CONSTRAINT `parque_flora_ibfk_2` FOREIGN KEY (`id_flora`) REFERENCES `flora` (`id_flora`);
 
 --
--- Constraints for table `tip`
+-- Filtros para la tabla `tip`
 --
 ALTER TABLE `tip`
   ADD CONSTRAINT `tip_ibfk_1` FOREIGN KEY (`id_parque`) REFERENCES `parque` (`id_parque`);
 
 --
--- Constraints for table `usuario`
+-- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_region`) REFERENCES `region` (`id_region`);
 
 --
--- Constraints for table `usuario_parque`
+-- Filtros para la tabla `usuario_parque`
 --
 ALTER TABLE `usuario_parque`
   ADD CONSTRAINT `fk_parque` FOREIGN KEY (`id_parque`) REFERENCES `parque` (`id_parque`) ON DELETE CASCADE,
